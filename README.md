@@ -3,6 +3,8 @@
 Site estático, rápido e sem servidor: as páginas são geradas no build e publicadas no **Cloudflare Workers (Static Assets)**, o caminho recomendado pelo Cloudflare para sites novos.
 O agendamento acontece pelo WhatsApp da clínica (o site não guarda dados de pacientes).
 
+**No ar:** https://unimaia-site.flowboticsapp.workers.dev/ (endereço provisório do Cloudflare, até ligar o domínio da clínica).
+
 ## Como rodar
 
 Requisito: Node.js 20 ou mais novo.
@@ -57,7 +59,7 @@ A configuração está em `wrangler.jsonc`: publica a pasta `dist/`, serve `/med
    - **Build command:** `npm run build`
    - **Deploy command:** `npx wrangler deploy` (padrão)
    - O Node vem do arquivo `.node-version` (22). As dependências são instaladas automaticamente a partir do `package-lock.json`.
-3. Depois disso, cada push na `main` publica o site sozinho. Antes de ter domínio, ele fica em `unimaia-site.<sua-conta>.workers.dev`.
+3. Depois disso, cada push na `main` publica o site sozinho. Antes de ter domínio próprio, o site fica em **https://unimaia-site.flowboticsapp.workers.dev/**.
 4. **Domínio próprio:** em **Settings → Domains & Routes**. No Workers, o domínio precisa estar gerenciado pelo Cloudflare (DNS apontado para ele, plano grátis). Se o domínio for do Registro.br, troque os servidores DNS para os do Cloudflare.
 5. **Velocidade dos usuários reais:** em **Analytics & Logs → Web Analytics**, adicione o site. Ele mede os Core Web Vitals sem cookies. O `_headers` já libera o script do Cloudflare.
 
