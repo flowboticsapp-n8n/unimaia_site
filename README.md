@@ -42,8 +42,9 @@ npm test
 | `src/css/input.css` | Fontes e estilos extras. O resto é Tailwind (`tailwind.config.js`, com as cores da logo). |
 | `src/icons/` | Ícones SVG (Lucide, licença ISC). Para usar um novo, copie o `.svg` para cá e use `<i data-lucide="nome" class="w-5 h-5"></i>`. |
 | `src/fonts/` | Fontes Plus Jakarta Sans e Outfit (licença OFL), hospedadas no próprio site. |
-| `src/static/` | Copiado como está para o site: `_headers`, `favicon.svg`, `robots.txt`. |
-| `scripts/` | Build e servidor de preview. |
+| `src/static/` | Copiado como está para o site: `_headers`, `robots.txt`, ícones do navegador e `assets/brand/` (logos). |
+| `brand/` | Logo oficial original, fonte das variações (não vai para o site). |
+| `scripts/` | Build, servidor de preview e `brand_assets.py` (gera as variações da logo). |
 | `tests/` | Testes do build e da montagem da mensagem do WhatsApp. |
 
 O build gera `dist/` (não vai para o Git).
@@ -72,6 +73,27 @@ O Cloudflare entrega tudo por CDN, com HTTPS e compressão Brotli. O `_headers` 
 
 > Se adicionar um serviço externo (Google Analytics, Meta Pixel, fotos de outro domínio), inclua o domínio no `Content-Security-Policy` do `src/static/_headers`, senão o navegador bloqueia.
 
+## Logo e ícones
+
+A logo oficial fica em `brand/unimaia-logo-original.webp`. As variações são geradas uma vez e versionadas no Git:
+
+```bash
+python3 scripts/brand_assets.py
+```
+
+O script precisa de Python com Pillow (com suporte a AVIF) e numpy. Ele não roda no build. Gera, em `src/static/assets/brand/`:
+
+| Arquivo | Uso |
+| :--- | :--- |
+| `logo-horizontal-v1-{40,80}` | Cabeçalho e menu do celular (1x e 2x). |
+| `logo-horizontal-dark-v1-{40,80}` | Rodapé, fundo escuro: o "V" vira branco. |
+| `logo-vertical-v1-{320,640}` e `-dark` | Composição original, para usos maiores (redes sociais, materiais). |
+| `simbolo-v1-256` | Só o símbolo "M". |
+
+Cada variação sai em **AVIF**, **WebP** e **PNG**. O `<picture>` do site entrega AVIF (cerca de 6 KB) para quem suporta e cai para WebP e PNG nos navegadores antigos. Também gera `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` e `icon-512.png` em `src/static/`.
+
+Se a logo mudar, troque o arquivo original, suba a `VERSION` no script (v1 → v2) e atualize os nomes em `src/partials/logo*.html`. O nome novo evita que o navegador use a logo antiga guardada em cache.
+
 ## Imagens
 
 Ao colocar fotos reais (equipe, fachada, recepção):
@@ -92,7 +114,7 @@ Quando o domínio da clínica estiver pronto, faça nesta ordem:
 - [ ] Adicionar canonical apontando para o domínio, sitemap.xml e imagem de compartilhamento (og:image).
 - [ ] Desativar o endereço `workers.dev` do Worker, para não ter conteúdo duplicado no Google.
 - [ ] Cadastrar o domínio no Google Search Console e enviar o sitemap.
-- [ ] Desligar o GitHub Pages do repositório (Settings → Pages).
+- [x] Desligar o GitHub Pages do repositório (Settings → Pages).
 - [ ] Confirmar com a clínica os itens abaixo.
 
 ### Dados a confirmar com a clínica
@@ -107,4 +129,6 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 - [ ] Tratamentos odontológicos oferecidos (`src/pages/odontologia.html`).
 - [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
-- [ ] Logo oficial em SVG para substituir a versão aproximada (`src/partials/logo.html` e `src/static/favicon.svg`).
+- [x] Logo oficial aplicada (variações em `src/static/assets/brand/`).
+- [ ] Pedir à clínica o arquivo vetorial da logo (SVG, AI ou PDF), se existir, para gerar as variações com nitidez máxima.
+- [ ] Aprovar com a clínica a versão horizontal (símbolo ao lado do nome) e a versão para fundo escuro ("V" branco), que foram montadas a partir da logo original.

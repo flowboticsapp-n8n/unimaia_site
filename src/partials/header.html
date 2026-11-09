@@ -21,8 +21,7 @@
   <header id="main-navbar" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-shadow duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
 
-      <!-- No celular o subtítulo da logo some para não quebrar linha ao lado do botão Agendar. -->
-      <a href="/" class="text-brand-900 hover:opacity-90 transition [&_.logo-sub]:hidden sm:[&_.logo-sub]:block" aria-label="Unimaia - página inicial">
+      <a href="/" class="shrink-0 hover:opacity-90 transition" aria-label="Unimaia - página inicial">
         <!-- include:logo -->
       </a>
 
@@ -53,7 +52,7 @@
   <!-- Fechado = fora da tela E invisível: sem isso a sombra vaza na borda direita e o Tab entra nos links escondidos. -->
   <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white z-50 shadow-2xl translate-x-full invisible transition-[transform,visibility] duration-300 ease-in-out flex flex-col justify-between p-6 overflow-y-auto" aria-label="Menu" aria-hidden="true">
     <div>
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100 text-brand-900">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <!-- include:logo -->
         <button id="close-mobile-menu" type="button" aria-label="Fechar menu" class="p-2 rounded-lg text-slate-400 hover:text-slate-700">
           <i data-lucide="x" class="w-5 h-5"></i>
