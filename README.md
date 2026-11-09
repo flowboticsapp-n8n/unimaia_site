@@ -1,44 +1,83 @@
-# VittaIntegrada | Clínica Médica de Multiespecialidades & Odontologia Avançada
+# Site Unimaia · Clínica Médica e Odontológica (Lajedo-PE)
 
-Projeto web profissional, responsivo e modular com **arquitetura multi-páginas**, focado em **alta taxa de conversão** para clínicas de saúde integradas.
+Site estático, rápido e sem servidor: as páginas são geradas no build e publicadas no **Cloudflare Pages**.
+O agendamento acontece pelo WhatsApp da clínica (o site não guarda dados de pacientes).
 
----
+## Como rodar
 
-## 🏛️ Estrutura de Páginas do Site
+Requisito: Node.js 20 ou mais novo.
 
-O site foi estruturado com rotas dedicadas para cada departamento do menu, enquanto a página inicial foi projetada para ser ágil, direta e com captura de pacientes logo na primeira dobra:
+```bash
+npm install
+```
 
-| Página | Arquivo | Foco Principal |
-| :--- | :--- | :--- |
-| **Início (Home)** | [`index.html`](file:///e:/Flowbotics/Antigravity/index.html) | Página direta, rápida e focada em conversão, com formulário de pré-agendamento no topo, selos de credibilidade e direcionamento claro para os polos médicos e odontológicos. |
-| **Especialidades Médicas** | [`medicina.html`](file:///e:/Flowbotics/Antigravity/medicina.html) | Detalhamento das 10 especialidades médicas (Cardiologia, Ginecologia, Pediatria, Ortopedia, Dermatologia, Endocrinologia, etc.), exames complementares e botão de agendamento por especialidade. |
-| **Odontologia Integrada** | [`odontologia.html`](file:///e:/Flowbotics/Antigravity/odontologia.html) | Foco em alta complexidade: **Sedação Consciente com Óxido Nitroso** (tratamento sem medo/dor), Alinhadores Invisíveis, Implantes & Carga Imediata, Facetas, Canal mecanizado e Odontopediatria. |
-| **Exames & Diagnósticos** | [`exames.html`](file:///e:/Flowbotics/Antigravity/exames.html) | Centro de diagnóstico integrado: Raio-X Panorâmico Digital, Scanner Intraoral 3D sem moldagens, Ultrassonografia, Eletrocardiograma (ECG) e coleta laboratorial no mesmo local. |
-| **Corpo Clínico** | [`corpo-clinico.html`](file:///e:/Flowbotics/Antigravity/corpo-clinico.html) | Apresentação dos médicos e cirurgiões-dentistas com foto, CRM/CRO, especialidade, títulos (USP, UNIFESP, UNICAMP) e agendamento direto com o profissional selecionado. |
-| **Convênios & Reembolso** | [`convenios.html`](file:///e:/Flowbotics/Antigravity/convenios.html) | Lista completa de planos de saúde e convênios odontológicos atendidos, guia de reembolso assistido e condições particulares (12x sem juros). |
-| **Contato & Localização** | [`contato.html`](file:///e:/Flowbotics/Antigravity/contato.html) | Endereço completo na Av. Paulista, mapa interativo do Google Maps, informações de estacionamento com manobrista (valet), proximidade do metrô e canais de contato. |
+```bash
+npm run build
+```
 
----
+```bash
+npm run preview
+```
 
-## ⚡ Recursos Globais & Motor Interativo
+Abra http://127.0.0.1:4173. O preview imita o Cloudflare Pages: URLs sem `.html`, página 404 e cabeçalhos do `_headers`.
 
-- **Navegação Inteligente:** Destaque automático do link da página ativa no menu de topo.
-- **Motor Global de Agendamento:** Qualquer botão *"Agendar Consulta"* ou *"Agendar com este Especialista"* abre um modal dinâmico que pré-seleciona a área, a especialidade e o nome do profissional.
-- **Conversão via WhatsApp Integrada:** Ao submeter o formulário (no topo da home ou no modal), é gerada uma mensagem pré-formatada e higienizada pronta para envio imediato à recepção da clínica no WhatsApp.
-- **Widget Flutuante do WhatsApp:** Disponível em todas as páginas com balão de boas-vindas da recepção e indicador de atendimento online.
-- **Máscara de Telefone:** Formatação automática no padrão brasileiro `(XX) XXXXX-XXXX`.
+```bash
+npm test
+```
 
----
+`npm run check` faz o build e roda os testes.
 
-## 🚀 Como Visualizar e Testar
+## Estrutura
 
-Não há necessidade de instalar Node.js, dependências ou compilar arquivos. 
+| Caminho | O que é |
+| :--- | :--- |
+| `site.config.json` | **Dados da clínica** (endereço, WhatsApp, horário, Instagram). Mude aqui e todas as páginas atualizam. |
+| `src/pages/` | Conteúdo de cada página. A primeira linha tem título e descrição para o Google. |
+| `src/partials/` | Partes repetidas: cabeçalho, rodapé, logo, modal de agendamento, chamada final. |
+| `src/js/main.js` | Menu do celular, modal e mensagem do WhatsApp. Sem bibliotecas. |
+| `src/css/input.css` | Fontes e estilos extras. O resto é Tailwind (`tailwind.config.js`, com as cores da logo). |
+| `src/icons/` | Ícones SVG (Lucide, licença ISC). Para usar um novo, copie o `.svg` para cá e use `<i data-lucide="nome" class="w-5 h-5"></i>`. |
+| `src/fonts/` | Fontes Plus Jakarta Sans e Outfit (licença OFL), hospedadas no próprio site. |
+| `src/static/` | Copiado como está para o site: `_headers`, `favicon.svg`, `robots.txt`. |
+| `scripts/` | Build e servidor de preview. |
+| `tests/` | Testes do build e da montagem da mensagem do WhatsApp. |
 
-Basta abrir o arquivo [`index.html`](file:///e:/Flowbotics/Antigravity/index.html) no seu navegador ou navegar entre as páginas:
-- [Página Inicial](file:///e:/Flowbotics/Antigravity/index.html)
-- [Medicina](file:///e:/Flowbotics/Antigravity/medicina.html)
-- [Odontologia](file:///e:/Flowbotics/Antigravity/odontologia.html)
-- [Exames](file:///e:/Flowbotics/Antigravity/exames.html)
-- [Corpo Clínico](file:///e:/Flowbotics/Antigravity/corpo-clinico.html)
-- [Convênios](file:///e:/Flowbotics/Antigravity/convenios.html)
-- [Contato](file:///e:/Flowbotics/Antigravity/contato.html)
+O build gera `dist/` (não vai para o Git).
+
+## Deploy no Cloudflare Pages
+
+1. No painel do Cloudflare: **Workers & Pages → Create → Pages → Connect to Git** e escolha este repositório.
+2. Configuração de build:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+   - A versão do Node vem do arquivo `.node-version` (22).
+3. Depois do primeiro deploy, em **Custom domains**, ligue o domínio da clínica.
+4. Ative o **Web Analytics** do projeto (Metrics). Ele mede a velocidade real dos visitantes (Core Web Vitals) sem cookies. O `_headers` já libera o script dele.
+
+O Cloudflare já entrega tudo por CDN e com compressão Brotli. O `_headers` define:
+- cache de 1 ano para `/assets/*` (CSS/JS têm hash no nome, então nunca ficam velhos);
+- cabeçalhos de segurança: CSP, nosniff, Referrer-Policy e Permissions-Policy.
+
+> Se adicionar um serviço externo (Google Analytics, Meta Pixel, fotos de outro domínio), inclua o domínio no `Content-Security-Policy` do `src/static/_headers`, senão o navegador bloqueia.
+
+## Imagens
+
+Ao colocar fotos reais (equipe, fachada, recepção):
+- salve em `src/static/img/` em **WebP** ou **AVIF**, já no tamanho de exibição (ex.: 400x400 para foto de perfil);
+- use `<img src="/img/arquivo.webp" alt="descrição" width="400" height="400" loading="lazy" decoding="async">`;
+- não use `loading="lazy"` na imagem principal do topo da página.
+
+## Dados a confirmar com a clínica
+
+Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios) e **precisam ser validados** antes de publicar:
+
+- [ ] Endereço: o Facebook diz **nº 75**; o cadastro do CNPJ diz **nº 157**.
+- [ ] WhatsApp: o Facebook diz **(87) 99995-2824**; diretórios citam **(87) 99941-7850**.
+- [ ] Horário (seg. a sex., 9h às 18h): veio de um único diretório. Sábado?
+- [ ] Nome e CRM do responsável técnico, obrigatório na publicidade médica (rodapé).
+- [ ] Convênios aceitos e formas de pagamento (`src/pages/convenios.html`).
+- [ ] Tratamentos odontológicos oferecidos (`src/pages/odontologia.html`).
+- [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
+- [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
+- [ ] Logo oficial em SVG para substituir a versão aproximada (`src/partials/logo.html` e `src/static/favicon.svg`).
+- [ ] Domínio do site, para adicionar canonical, sitemap e imagem de compartilhamento (og:image).

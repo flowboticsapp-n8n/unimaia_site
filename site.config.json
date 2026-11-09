@@ -1,0 +1,23 @@
+{
+  "_comentario": "Dados da clínica usados em todas as páginas. Itens marcados como a confirmar vieram de diretórios públicos e precisam ser validados com a Unimaia.",
+  "name": "Unimaia",
+  "legalName": "Unimaia Clínica Médica e Odontológica",
+  "tagline": "Especialistas em um só lugar",
+  "cnpj": "37.728.339/0001-19",
+  "street": "Rua Major Capitú, 75",
+  "neighborhood": "Centro",
+  "city": "Lajedo",
+  "state": "PE",
+  "cep": "55385-000",
+  "whatsapp": "5587999952824",
+  "whatsappDisplay": "(87) 99995-2824",
+  "instagram": "unimaia_",
+  "hoursShort": "Seg. a sex., 09h às 18h",
+  "hoursLong": "Segunda a sexta, das 09h às 18h",
+  "openingHours": {
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "technicalDirector": "Responsável técnico: [nome do médico] · CRM-PE [número]"
+}

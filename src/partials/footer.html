@@ -1,0 +1,50 @@
+  <footer class="bg-brand-950 text-slate-400 text-sm py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="space-y-3">
+          <a href="/" class="inline-block text-white" aria-label="Unimaia - página inicial">
+            <!-- include:logo -->
+          </a>
+          <p class="text-slate-400">{{site.tagline}}: consultas médicas, odontologia, terapias e exames no Centro de {{site.city}}.</p>
+          <a href="{{site.instagramUrl}}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-white font-semibold hover:text-brand-300 transition">
+            <i data-lucide="instagram" class="w-4 h-4"></i> @{{site.instagram}}
+          </a>
+        </div>
+
+        <div>
+          <h2 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Atendimento</h2>
+          <ul class="space-y-2">
+            <li><a href="/medicina" class="hover:text-white transition">Especialidades médicas</a></li>
+            <li><a href="/medicina#terapias" class="hover:text-white transition">Psicologia, fisioterapia e quiropraxia</a></li>
+            <li><a href="/odontologia" class="hover:text-white transition">Odontologia</a></li>
+            <li><a href="/exames" class="hover:text-white transition">Exames laboratoriais e ultrassom</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Informações</h2>
+          <ul class="space-y-2">
+            <li><a href="/corpo-clinico" class="hover:text-white transition">Equipe</a></li>
+            <li><a href="/convenios" class="hover:text-white transition">Convênios e pagamento</a></li>
+            <li><a href="/contato" class="hover:text-white transition">Como chegar</a></li>
+            <li><a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="text-emerald-300 hover:text-white font-bold transition">WhatsApp {{site.whatsappDisplay}}</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Endereço</h2>
+          <address class="not-italic space-y-1">
+            <p>{{site.street}} - {{site.neighborhood}}</p>
+            <p>{{site.city}} - {{site.state}}, CEP {{site.cep}}</p>
+          </address>
+          <p class="mt-2">{{site.hoursLong}}</p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center md:text-left">
+        <p>&copy; {{site.year}} {{site.legalName}} · CNPJ {{site.cnpj}}</p>
+        <p>{{site.technicalDirector}}</p>
+      </div>
+    </div>
+  </footer>

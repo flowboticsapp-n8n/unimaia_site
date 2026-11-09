@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{page.title}}</title>
+  <meta name="description" content="{{page.description}}">
+  <meta name="robots" content="{{page.robots}}">
+  <meta name="theme-color" content="#0a2748">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="{{site.legalName}}">
+  <meta property="og:title" content="{{page.title}}">
+  <meta property="og:description" content="{{page.description}}">
+
+  <!-- Fontes hospedadas no próprio site: o navegador começa a baixar antes de ler o CSS -->
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{asset.css}}">
+  <script src="{{asset.js}}" defer></script>
+  {{page.head}}
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white" data-whatsapp="{{site.whatsapp}}">
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:text-brand-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- include:header -->
+
+  <main id="conteudo">
+<!-- page:content -->
+  </main>
+
+  <!-- include:footer -->
+  <!-- include:widgets -->
+</body>
+</html>
