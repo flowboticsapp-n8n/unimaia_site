@@ -12,100 +12,128 @@
       </div>
     </section>
 
+
+    <!-- Atalhos: no celular, uma linha que rola para o lado (como em apps); no desktop, quebra em várias linhas. -->
+    <nav aria-label="Ir direto para a especialidade" class="bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex gap-2 overflow-x-auto lg:flex-wrap lg:justify-center snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+          <a href="#clinica-geral" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Clínica Geral</a>
+          <a href="#cardiologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Cardiologia</a>
+          <a href="#dermatologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Dermatologia</a>
+          <a href="#endocrinologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Endocrinologia</a>
+          <a href="#gastroenterologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Gastroenterologia</a>
+          <a href="#geriatria" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Geriatria</a>
+          <a href="#ginecologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Ginecologia</a>
+          <a href="#hepatologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Hepatologia</a>
+          <a href="#neurologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Neurologia</a>
+          <a href="#nutrologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Nutrologia</a>
+          <a href="#obstetricia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Obstetrícia</a>
+          <a href="#oftalmologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Oftalmologia</a>
+          <a href="#ortopedia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Ortopedia</a>
+          <a href="#pediatria" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Pediatria</a>
+          <a href="#pneumologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Pneumologia</a>
+          <a href="#psiquiatria" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Psiquiatria</a>
+          <a href="#psicologia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Psicologia</a>
+          <a href="#fisioterapia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Fisioterapia</a>
+          <a href="#quiropraxia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Quiropraxia</a>
+        </div>
+      </div>
+    </nav>
+
     <section class="py-16 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="clinica-geral" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="stethoscope" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Clínica Geral</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Avaliação de saúde, check-up e acompanhamento de doenças crônicas, com encaminhamento ao especialista quando necessário.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Clínica Geral" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Clínica Geral</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="cardiologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="heart-pulse" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Cardiologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Coração e circulação: pressão alta, colesterol, palpitações e prevenção de doenças cardiovasculares.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Cardiologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Cardiologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="dermatologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="sparkles" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Dermatologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Pele, cabelos e unhas: acne, manchas, alergias e prevenção do câncer de pele.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Dermatologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Dermatologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="endocrinologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="droplets" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Endocrinologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Hormônios e metabolismo: diabetes, tireoide, obesidade e alterações hormonais.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Endocrinologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Endocrinologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="gastroenterologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="activity" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Gastroenterologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Sistema digestivo: azia, refluxo, gastrite, intestino irregular e dor abdominal.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Gastroenterologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Gastroenterologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="geriatria" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="hand-heart" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Geriatria</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Cuidado integral da pessoa idosa: memória, prevenção de quedas, uso de medicamentos e qualidade de vida.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Geriatria" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Geriatria</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="ginecologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="venus" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Ginecologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Saúde da mulher em todas as fases da vida: prevenção, exames de rotina e orientação.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Ginecologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Ginecologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="hepatologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="pill" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Hepatologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Fígado e vias biliares: gordura no fígado, hepatites e alterações nos exames do fígado.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Hepatologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Hepatologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="neurologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="brain" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Neurologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Cérebro e nervos: dor de cabeça, enxaqueca, tontura, formigamentos e alterações de memória.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Neurologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Neurologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="nutrologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="salad" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Nutrologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Avaliação médica da nutrição e do metabolismo: controle de peso, deficiências de vitaminas e hábitos alimentares.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Nutrologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Nutrologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="obstetricia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="baby" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Obstetrícia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Acompanhamento da gestação, do pré-natal ao pós-parto.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Obstetrícia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Obstetrícia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="oftalmologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="eye" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Oftalmologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Saúde dos olhos: consulta de rotina, avaliação da visão e doenças oculares.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Oftalmologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Oftalmologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="ortopedia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="bone" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Ortopedia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Ossos, articulações e coluna: dores, lesões, entorses e problemas posturais.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Ortopedia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Ortopedia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="pediatria" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="baby" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Pediatria</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Saúde de bebês, crianças e adolescentes: consultas de rotina, crescimento e desenvolvimento.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Pediatria" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Pediatria</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="pneumologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="wind" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Pneumologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Pulmões e respiração: asma, bronquite, falta de ar e tosse persistente.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Pneumologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Pneumologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="psiquiatria" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="brain" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Psiquiatria</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Saúde mental com acompanhamento médico: ansiedade, depressão, insônia e outros transtornos.</p>
@@ -123,19 +151,19 @@
           <p class="text-slate-600 mt-2">Atendimento com psicólogos, fisioterapeutas e quiropraxistas, que complementa o cuidado médico.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="psicologia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="heart-handshake" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Psicologia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Psicoterapia para crianças, adolescentes e adultos: ansiedade, emoções, relacionamentos e autoconhecimento.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Psicologia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Psicologia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="fisioterapia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="person-standing" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Fisioterapia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Reabilitação de dores, lesões e pós-operatório, com exercícios e recursos terapêuticos.</p>
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Fisioterapia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar Fisioterapia</a>
           </article>
-          <article class="card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+          <article id="quiropraxia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="hand" class="w-6 h-6"></i></span>
             <h3 class="text-lg font-bold text-slate-900 mt-4">Quiropraxia</h3>
             <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Técnicas manuais para dores na coluna, no pescoço e nas articulações.</p>

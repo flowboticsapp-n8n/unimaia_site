@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{page.title}}</title>
   <meta name="description" content="{{page.description}}">
   <meta name="robots" content="{{page.robots}}">
@@ -25,7 +25,7 @@
   <script src="{{asset.js}}" defer></script>
   {{page.head}}
 </head>
-<body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white" data-whatsapp="{{site.whatsapp}}">
+<body class="min-h-screen flex flex-col pb-[calc(4rem_+_env(safe-area-inset-bottom))] lg:pb-0 bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white" data-whatsapp="{{site.whatsapp}}">
   <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-white focus:text-brand-900 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">Pular para o conteúdo</a>
 
   <!-- include:header -->
@@ -36,5 +36,6 @@
 
   <!-- include:footer -->
   <!-- include:widgets -->
+  <!-- include:mobile-nav -->
 </body>
 </html>

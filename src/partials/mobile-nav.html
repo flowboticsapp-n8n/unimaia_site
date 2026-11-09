@@ -1,0 +1,26 @@
+  <!-- Barra de navegação fixa do celular (padrão de apps): as ações principais ficam ao alcance do polegar.
+       Some no desktop (lg), onde o menu do topo já mostra tudo. env(safe-area-inset-bottom) evita a barra
+       de gestos do iPhone. -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 pb-[env(safe-area-inset-bottom)]" aria-label="Navegação rápida">
+    <div class="grid grid-cols-5 h-16 text-[11px] font-semibold text-slate-500">
+      <a href="/" data-nav="inicio" class="flex flex-col items-center justify-center gap-1 aria-[current=page]:text-brand-700">
+        <i data-lucide="house" class="w-6 h-6"></i><span>Início</span>
+      </a>
+      <a href="/medicina" data-nav="medicina" class="flex flex-col items-center justify-center gap-1 aria-[current=page]:text-brand-700">
+        <i data-lucide="stethoscope" class="w-6 h-6"></i><span>Especialidades</span>
+      </a>
+      <!-- Ação principal em destaque. Sem JavaScript, abre o WhatsApp. -->
+      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn flex flex-col items-center justify-center gap-1 text-brand-700">
+        <span class="-mt-7 w-14 h-14 rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 ring-4 ring-white flex items-center justify-center">
+          <i data-lucide="calendar" class="w-6 h-6"></i>
+        </span>
+        <span>Agendar</span>
+      </a>
+      <a href="{{site.whatsappLink}}?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20agendamento." target="_blank" rel="noopener" class="flex flex-col items-center justify-center gap-1 text-emerald-700">
+        <i data-lucide="message-circle" class="w-6 h-6"></i><span>WhatsApp</span>
+      </a>
+      <a href="/contato" data-nav="contato" class="flex flex-col items-center justify-center gap-1 aria-[current=page]:text-brand-700">
+        <i data-lucide="map-pin" class="w-6 h-6"></i><span>Contato</span>
+      </a>
+    </div>
+  </nav>
