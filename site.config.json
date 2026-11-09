@@ -1,5 +1,7 @@
 {
   "_comentario": "Dados da clínica usados em todas as páginas. Itens marcados como a confirmar vieram de diretórios públicos e precisam ser validados com a Unimaia.",
+  "_indexable": "false = o Google não indexa nenhuma página (meta robots noindex). Trocar para true só no domínio próprio; ver README > Checklist para ir para produção.",
+  "indexable": false,
   "name": "Unimaia",
   "legalName": "Unimaia Clínica Médica e Odontológica",
   "tagline": "Especialistas em um só lugar",

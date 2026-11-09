@@ -86,5 +86,6 @@ Quando você aplicar um conceito importante de segurança, banco ou arquitetura,
 - **Como rodar / testar:** `npm install`, `npm run build`, `npm run preview` (http://127.0.0.1:4173), `npm test`. `npm run check` faz build e testes.
 - **Estrutura de pastas relevante:** `site.config.json` (dados da clínica), `src/pages/` (conteúdo), `src/partials/` (cabeçalho, rodapé, modal), `src/js/main.js`, `src/icons/` (SVG Lucide), `src/static/_headers` (cache e CSP).
 - **Convenções próprias:** dados da clínica só no `site.config.json` (usar `{{site.chave}}`); ícones com `<i data-lucide="nome">` (viram SVG no build); links internos sem `.html` (`/medicina`); sem scripts de CDN externo.
+- **Indexação:** bloqueada (`"indexable": false` no `site.config.json`) até o domínio próprio. Quando o assunto for domínio, produção ou SEO, lembrar o usuário do "Checklist para ir para produção" no README.
 - **O que NUNCA mexer:** não inventar dados da clínica (profissionais, CRM, convênios, avaliações, números). O que não foi confirmado fica como "consulte pelo WhatsApp" ou TODO.
 - **Escala esperada (usuários, volume de dados):** clínica local; poucas centenas de visitas por dia. Sem banco de dados; agendamento vai pelo WhatsApp.

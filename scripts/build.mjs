@@ -18,6 +18,7 @@ import {
   markActiveNav,
   jsonForScript,
   clinicJsonLd,
+  robotsContent,
 } from './lib.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -91,7 +92,7 @@ async function main() {
       html,
       {
         site,
-        page: { title: meta.title, description: meta.description, head, robots: meta.noindex ? 'noindex' : 'index, follow' },
+        page: { title: meta.title, description: meta.description, head, robots: robotsContent(site, meta) },
         asset: { css: cssPath, js: jsPath },
       },
       new Set(['page.head']),
@@ -102,6 +103,13 @@ async function main() {
   }
 
   console.log(`Build ok em ${Date.now() - started} ms: ${Object.keys(pages).length} páginas, ${cssPath}, ${jsPath}`);
+  if (!site.indexable) {
+    // Aparece em todo build (inclusive no log do Cloudflare) para ninguém esquecer.
+    console.warn(
+      'AVISO: indexação no Google BLOQUEADA (site.config.json: "indexable": false). ' +
+        'Ao ligar o domínio próprio, siga o README > "Checklist para ir para produção".',
+    );
+  }
 }
 
 main().catch((err) => {
