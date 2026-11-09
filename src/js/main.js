@@ -137,6 +137,7 @@
 
     function setOpen(open) {
       drawer.classList.toggle('translate-x-full', !open);
+      drawer.classList.toggle('invisible', !open);
       drawer.setAttribute('aria-hidden', String(!open));
       toggleBtn.setAttribute('aria-expanded', String(open));
       if (backdrop) backdrop.classList.toggle('hidden', !open);

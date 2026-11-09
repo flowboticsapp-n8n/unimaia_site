@@ -4,13 +4,45 @@
   "noindex": true
 } -->
 
-    <section class="py-24 bg-gradient-to-b from-brand-50 to-white">
-      <div class="max-w-xl mx-auto px-4 text-center space-y-4">
-        <p class="text-6xl font-extrabold text-brand-600 font-heading">404</p>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-brand-900">Página não encontrada</h1>
-        <p class="text-slate-600">O endereço pode ter mudado. Use o menu ou volte para o início.</p>
-        <a href="/" class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl transition">
-          Ir para o início <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
+    <!-- flex-1: ocupa a altura que sobrar na tela, então o rodapé fica sempre embaixo. -->
+    <section class="flex-1 flex items-center bg-gradient-to-b from-brand-50 via-white to-slate-50 py-16 sm:py-24">
+      <div class="w-full max-w-3xl mx-auto px-4 sm:px-6 text-center">
+
+        <span class="mx-auto w-16 h-16 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center">
+          <i data-lucide="search-x" class="w-8 h-8"></i>
+        </span>
+        <p class="mt-5 text-sm font-bold uppercase tracking-widest text-brand-700">Erro 404</p>
+        <h1 class="mt-2 text-3xl sm:text-4xl font-extrabold text-brand-900">Não encontramos esta página</h1>
+        <p class="mt-3 text-slate-600 max-w-lg mx-auto">
+          O endereço pode estar digitado errado ou a página mudou de lugar. Veja abaixo os caminhos mais procurados.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg shadow-brand-600/25 transition">
+            Ir para o início <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="{{site.whatsappLink}}?text=Ol%C3%A1!%20N%C3%A3o%20encontrei%20uma%20informa%C3%A7%C3%A3o%20no%20site." target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold px-6 py-3 rounded-xl transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Perguntar no WhatsApp
+          </a>
+        </div>
+
+        <nav class="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 text-left" aria-label="Páginas mais procuradas">
+          <a href="/medicina" class="card-hover bg-white rounded-2xl border border-slate-200 p-4 flex flex-col gap-2">
+            <i data-lucide="stethoscope" class="w-5 h-5 text-brand-600"></i>
+            <span class="font-bold text-slate-900 text-sm">Especialidades</span>
+          </a>
+          <a href="/odontologia" class="card-hover bg-white rounded-2xl border border-slate-200 p-4 flex flex-col gap-2">
+            <i data-lucide="smile" class="w-5 h-5 text-brand-600"></i>
+            <span class="font-bold text-slate-900 text-sm">Odontologia</span>
+          </a>
+          <a href="/exames" class="card-hover bg-white rounded-2xl border border-slate-200 p-4 flex flex-col gap-2">
+            <i data-lucide="microscope" class="w-5 h-5 text-brand-600"></i>
+            <span class="font-bold text-slate-900 text-sm">Exames</span>
+          </a>
+          <a href="/contato" class="card-hover bg-white rounded-2xl border border-slate-200 p-4 flex flex-col gap-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-brand-600"></i>
+            <span class="font-bold text-slate-900 text-sm">Como chegar</span>
+          </a>
+        </nav>
       </div>
     </section>
