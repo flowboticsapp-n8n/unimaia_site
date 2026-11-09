@@ -103,7 +103,7 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 - [ ] WhatsApp: o Facebook diz **(87) 99995-2824**; diretórios citam **(87) 99941-7850**.
 - [ ] Horário (seg. a sex., 9h às 18h): veio de um único diretório. Sábado?
 - [ ] Nome e CRM do responsável técnico, obrigatório na publicidade médica (rodapé).
-- [ ] Convênios aceitos e formas de pagamento (`src/pages/convenios.html`).
+- [ ] Formas de pagamento (Pix, cartão, parcelamento), se a clínica quiser mostrar no site. A clínica **não aceita convênios**.
 - [ ] Tratamentos odontológicos oferecidos (`src/pages/odontologia.html`).
 - [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
