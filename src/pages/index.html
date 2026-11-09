@@ -6,7 +6,17 @@
 } -->
 
     <!-- HERO -->
-    <section class="relative pt-10 pb-16 lg:py-20 bg-gradient-to-b from-brand-50 via-white to-slate-50 overflow-hidden">
+    <section class="relative isolate pt-10 pb-16 lg:py-20 bg-brand-50 overflow-hidden">
+      <!-- Foto de fundo (esboço, Unsplash; ver scripts/optimize_images.py). É a maior imagem da tela inicial:
+           fetchpriority="high" e sem lazy, para o navegador baixar primeiro. srcset/sizes: o celular
+           baixa a versão de 640 px, e não a de 1600. -->
+      <picture>
+        <source type="image/avif" srcset="/assets/img/hero-recepcao-v1-640.avif 640w, /assets/img/hero-recepcao-v1-1024.avif 1024w, /assets/img/hero-recepcao-v1-1600.avif 1600w" sizes="100vw">
+        <source type="image/webp" srcset="/assets/img/hero-recepcao-v1-640.webp 640w, /assets/img/hero-recepcao-v1-1024.webp 1024w, /assets/img/hero-recepcao-v1-1600.webp 1600w" sizes="100vw">
+        <img src="/assets/img/hero-recepcao-v1-1024.jpg" srcset="/assets/img/hero-recepcao-v1-640.jpg 640w, /assets/img/hero-recepcao-v1-1024.jpg 1024w, /assets/img/hero-recepcao-v1-1600.jpg 1600w" sizes="100vw" width="1600" height="1390" alt="" fetchpriority="high" decoding="async" class="absolute inset-0 -z-20 w-full h-full object-cover object-[50%_70%]">
+      </picture>
+      <!-- Véu claro por cima da foto: garante contraste do texto (mais forte no celular, onde o texto fica sobre a foto toda). -->
+      <div class="absolute inset-0 -z-10 bg-white/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-white lg:via-white/85 lg:to-brand-50/40" aria-hidden="true"></div>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
         <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
