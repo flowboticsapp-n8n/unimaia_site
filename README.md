@@ -98,7 +98,7 @@ Se a logo mudar, troque o arquivo original, suba a `VERSION` no script (v1 → v
 
 ## Imagens
 
-**Foto do topo da página inicial:** é um esboço para a apresentação, tirado do [Unsplash](https://unsplash.com/photos/photo-1519494026892-80bbd2d6fd0d) (licença gratuita, sem atribuição obrigatória). O original fica em `media/hero-recepcao-original.jpg`. O `scripts/optimize_images.py` corta, redimensiona (640, 1024 e 1600 px) e gera AVIF, WebP e JPEG em `src/static/assets/img/`:
+**Foto do topo da página inicial:** é um esboço para a apresentação: médica conversando com paciente na mesa do consultório, foto de Vitaly Gariev no [Unsplash](https://unsplash.com/photos/doctor-consulting-with-a-patient-in-an-office-MJmsLpeHPfg) (licença gratuita, sem atribuição obrigatória). O original fica em `media/hero-consulta-original.jpg`. O `scripts/optimize_images.py` redimensiona a foto (640, 1024 e 1600 px) e gera AVIF, WebP e JPEG em `src/static/assets/img/`:
 
 ```bash
 python3 scripts/optimize_images.py

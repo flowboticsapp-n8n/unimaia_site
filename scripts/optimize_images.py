@@ -18,13 +18,12 @@ OUT = ROOT / "src" / "static" / "assets" / "img"
 
 IMAGES = [
     {
-        # Recepção de clínica. Unsplash (licença gratuita): https://unsplash.com/photos/photo-1519494026892-80bbd2d6fd0d
+        # Médica conversando com paciente na mesa do consultório. Unsplash (licença gratuita),
+        # foto de Vitaly Gariev: https://unsplash.com/photos/doctor-consulting-with-a-patient-in-an-office-MJmsLpeHPfg
         # Imagem de esboço para apresentar ao cliente; trocar por foto real da Unimaia.
-        "source": ROOT / "media" / "hero-recepcao-original.jpg",
-        "name": "hero-recepcao-v1",
-        # Corte (esquerda, topo, direita, baixo) em pixels da original: remove a placa de hospital
-        # em espanhol do canto direito, que não tem relação com a clínica.
-        "crop": (0, 0, 1880, 1633),
+        "source": ROOT / "media" / "hero-consulta-original.jpg",
+        "name": "hero-consulta-v1",
+        "crop": None,
         "widths": (640, 1024, 1600),
     },
 ]
