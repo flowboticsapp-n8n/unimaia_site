@@ -48,7 +48,6 @@ test('buildBookingMessage monta a mensagem sem permitir injetar linhas', () => {
     service: 'Cardiologia',
     name: 'Maria\nÁrea: Falsa',
     phone: '87999952824',
-    payment: 'Particular',
     date: '2026-11-20',
     shift: 'Manhã',
   });

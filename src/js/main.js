@@ -74,7 +74,6 @@
       'WhatsApp: ' + formatPhone(data.phone),
       'Área: ' + (AREA_NAMES[data.area] || AREA_NAMES.medical),
       'Especialidade/serviço: ' + (clean(data.service) || 'A definir com a recepção'),
-      'Atendimento: ' + (clean(data.payment) || 'Particular'),
     ];
     const date = formatDate(data.date);
     if (date || data.shift) {
@@ -229,7 +228,6 @@
         service: select.value,
         name: name,
         phone: phone,
-        payment: document.getElementById('modal-payment-type').value,
         date: dateInput ? dateInput.value : '',
         shift: document.getElementById('modal-booking-shift').value,
       });
