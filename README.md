@@ -44,7 +44,8 @@ npm test
 | `src/fonts/` | Fontes Plus Jakarta Sans e Outfit (licença OFL), hospedadas no próprio site. |
 | `src/static/` | Copiado como está para o site: `_headers`, `robots.txt`, ícones do navegador e `assets/brand/` (logos). |
 | `brand/` | Logo oficial original, fonte das variações (não vai para o site). |
-| `scripts/` | Build, servidor de preview e `brand_assets.py` (gera as variações da logo). |
+| `media/` | Fotos originais, fonte das versões otimizadas (não vão para o site). |
+| `scripts/` | Build, servidor de preview, `brand_assets.py` (variações da logo) e `optimize_images.py` (fotos em AVIF/WebP/JPEG). |
 | `tests/` | Testes do build e da montagem da mensagem do WhatsApp. |
 
 O build gera `dist/` (não vai para o Git).
@@ -97,6 +98,15 @@ Se a logo mudar, troque o arquivo original, suba a `VERSION` no script (v1 → v
 
 ## Imagens
 
+**Foto do topo da página inicial:** é um esboço para a apresentação: médica conversando com paciente na mesa do consultório, foto de Vitaly Gariev no [Unsplash](https://unsplash.com/photos/doctor-consulting-with-a-patient-in-an-office-MJmsLpeHPfg) (licença gratuita, sem atribuição obrigatória). O original fica em `media/hero-consulta-original.jpg`. O `scripts/optimize_images.py` redimensiona a foto (640, 1024 e 1600 px) e gera AVIF, WebP e JPEG em `src/static/assets/img/`:
+
+```bash
+python3 scripts/optimize_images.py
+```
+
+Para trocar pela foto real da clínica: coloque o original em `media/`, ajuste a lista `IMAGES` do script (suba a versão v1 → v2), rode o script e atualize os nomes no `<picture>` do topo de `src/pages/index.html`.
+
+
 Ao colocar fotos reais (equipe, fachada, recepção):
 - salve em `src/static/img/` em **WebP** ou **AVIF**, já no tamanho de exibição (ex.: 400x400 para foto de perfil);
 - use `<img src="/img/arquivo.webp" alt="descrição" width="400" height="400" loading="lazy" decoding="async">`;
@@ -143,5 +153,6 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 - [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
 - [x] Logo oficial aplicada (variações em `src/static/assets/brand/`).
+- [ ] Trocar a foto de esboço do topo da página inicial (Unsplash) por uma foto real da recepção ou da fachada da Unimaia.
 - [ ] Pedir à clínica o arquivo vetorial da logo (SVG, AI ou PDF), se existir, para gerar as variações com nitidez máxima.
 - [ ] Aprovar com a clínica a versão horizontal (símbolo ao lado do nome) e a versão para fundo escuro ("V" branco), que foram montadas a partir da logo original.
