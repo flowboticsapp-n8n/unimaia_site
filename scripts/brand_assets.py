@@ -1,4 +1,5 @@
-"""Gera as variações da logo oficial da Unimaia a partir de brand/unimaia-logo-original.webp.
+"""Gera as variações da logo oficial da Unimaia (brand/unimaia-logo-original.webp)
+e o crédito da Flowbotics no rodapé (brand/flowbotics-logo-original.webp).
 
 Rodar só quando a logo original mudar (não faz parte do build):
     python3 scripts/brand_assets.py
@@ -101,8 +102,10 @@ def negative_mark(mark: Image.Image) -> Image.Image:
     return Image.fromarray(arr, "RGBA")
 
 
-def trim(img: Image.Image) -> Image.Image:
-    return img.crop(img.getchannel("A").getbbox())
+def trim(img: Image.Image, min_alpha: int = 0) -> Image.Image:
+    """Corta as bordas transparentes. min_alpha ignora "poeira" quase invisível em volta da arte."""
+    mask = img.getchannel("A").point(lambda v: 255 if v > min_alpha else 0)
+    return img.crop(mask.getbbox())
 
 
 def horizontal_lockup(mark: Image.Image, word: Image.Image, height: int) -> Image.Image:
@@ -131,6 +134,33 @@ def square_icon(mark: Image.Image, size: int, background=None, padding=0.12) -> 
     m = mark.resize((max(1, round(mark.width * scale)), max(1, round(mark.height * scale))), Image.LANCZOS)
     canvas.alpha_composite(m, ((size - m.width) // 2, (size - m.height) // 2))
     return canvas
+
+
+FLOWBOTICS_SRC = ROOT / "brand" / "flowbotics-logo-original.webp"
+# Colunas (pixels da original) da palavra "Flow", escrita em azul-marinho; "botics" começa depois.
+FLOWBOTICS_DARK_WORD_COLS = (630, 1199)
+
+
+def flowbotics_assets() -> list:
+    """Logo da Flowbotics (crédito "Desenvolvido por" no rodapé escuro): "Flow" vira branco."""
+    logo = Image.open(FLOWBOTICS_SRC).convert("RGBA")  # a original já tem fundo transparente
+    arr = np.asarray(logo).copy()
+    x0, x1 = FLOWBOTICS_DARK_WORD_COLS
+    region = arr[:, x0:x1]
+    region[region[..., 3] > 0, 0:3] = 255
+    # A original tem pixels com alfa 1 a 9 espalhados pelo fundo: limpa e ignora no corte.
+    arr[arr[..., 3] <= 12, 3] = 0
+    dark = trim(Image.fromarray(arr, "RGBA"), min_alpha=12)
+    out = []
+    big_h = 48  # 2x de h-6 (24 px)
+    big_w = round(dark.width * big_h / dark.height)
+    big_w += big_w % 2  # largura par: a 1x fica exatamente com a metade
+    big = dark.resize((big_w, big_h), Image.LANCZOS)
+    small = big.resize((big_w // 2, big_h // 2), Image.LANCZOS)
+    save_all(big, f"flowbotics-dark-{VERSION}-48")
+    save_all(small, f"flowbotics-dark-{VERSION}-24")
+    out.append((f"flowbotics-dark-{VERSION}", small.size, big.size))
+    return out
 
 
 def main() -> None:
@@ -177,6 +207,7 @@ def main() -> None:
         OUT_STATIC / "icon-512.png", optimize=True
     )
 
+    sizes += flowbotics_assets()
     for stem, small, big in sizes:
         print(f"{stem}: 1x {small[0]}x{small[1]}, 2x {big[0]}x{big[1]}  (use width={small[0]} height={small[1]} no HTML)")
     for f in sorted(OUT_BRAND.iterdir()):
