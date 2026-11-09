@@ -1,0 +1,35 @@
+// Configuração do deploy no Cloudflare Workers (Static Assets).
+// Site 100% estático: não há código de Worker ("main"), só os arquivos gerados em dist/.
+// Docs: https://developers.cloudflare.com/workers/static-assets/
+{
+  "name": "unimaia-site",
+  // Data de compatibilidade do runtime. Atualize só quando quiser adotar mudanças novas do Cloudflare.
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // /medicina serve medicina.html (os links do site já são sem .html).
+    "html_handling": "auto-trailing-slash",
+    // Endereço inexistente devolve dist/404.html com status 404.
+    "not_found_handling": "404-page"
+  },
+  // Necessário para o build de prévia das branches (o Cloudflare roda `npx wrangler preview`).
+  // Vazio = a prévia usa as mesmas configurações de cima (assets, compatibilidade).
+  // Docs: https://developers.cloudflare.com/workers/previews/configuration/
+  "previews": {},
+  // Igual ao que está ativo no painel do Cloudflare (Settings > Observability).
+  // O deploy pelo wrangler aplica este arquivo por cima do painel: sem este bloco,
+  // a configuração local ficaria diferente da do painel e os logs seriam desligados.
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": false,
+      "head_sampling_rate": 1,
+      "persist": true
+    }
+  }
+}

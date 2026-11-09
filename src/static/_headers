@@ -1,5 +1,6 @@
-# Cabeçalhos do Cloudflare Pages (https://developers.cloudflare.com/pages/configuration/headers/)
-# HTML fica com o padrão do Pages (revalida sempre), então uma publicação nova aparece na hora.
+# Cabeçalhos do Cloudflare Workers Static Assets (https://developers.cloudflare.com/workers/static-assets/headers/)
+# O Cloudflare lê este arquivo no deploy e aplica as regras; ele não é servido como página.
+# HTML fica com o padrão do Cloudflare (revalida sempre), então uma publicação nova aparece na hora.
 
 # CSS/JS têm hash no nome e as fontes não mudam: cache de 1 ano no navegador.
 # Se trocar um arquivo de fonte, troque também o nome dele.

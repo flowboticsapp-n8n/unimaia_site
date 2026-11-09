@@ -1,4 +1,4 @@
-// Servidor local para testar o dist/ como no Cloudflare Pages:
+// Servidor local para testar o dist/ como no Cloudflare (wrangler.jsonc):
 // URLs sem ".html" (/medicina -> medicina.html), 404.html e cabeçalhos do _headers.
 // Só para desenvolvimento: escuta apenas em 127.0.0.1.
 import { createServer } from 'node:http';
