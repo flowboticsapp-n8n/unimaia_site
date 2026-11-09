@@ -11,5 +11,21 @@
     "html_handling": "auto-trailing-slash",
     // Endereço inexistente devolve dist/404.html com status 404.
     "not_found_handling": "404-page"
+  },
+  // Igual ao que está ativo no painel do Cloudflare (Settings > Observability).
+  // O deploy pelo wrangler aplica este arquivo por cima do painel: sem este bloco,
+  // a configuração local ficaria diferente da do painel e os logs seriam desligados.
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": false,
+      "head_sampling_rate": 1,
+      "persist": true
+    }
   }
 }
