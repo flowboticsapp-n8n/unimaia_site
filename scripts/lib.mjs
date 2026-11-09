@@ -35,6 +35,9 @@ export function buildSiteData(config) {
   if (!/^[A-Za-z0-9._]{1,30}$/.test(config.instagram || '')) {
     throw new Error('site.config.json: "instagram" deve ser só o @, sem a arroba');
   }
+  if (!/^https:\/\/[^\s"<>]+$/.test(config.googleBusinessUrl || '')) {
+    throw new Error('site.config.json: "googleBusinessUrl" deve ser um link https da página da clínica no Google');
+  }
   if (typeof config.indexable !== 'boolean') {
     throw new Error('site.config.json: "indexable" deve ser true ou false (false bloqueia o Google)');
   }
