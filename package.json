@@ -1,0 +1,19 @@
+{
+  "name": "unimaia-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site estático da Unimaia Clínica Médica e Odontológica (Lajedo-PE).",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "lint": "node --check src/js/main.js && node --check scripts/build.mjs && node --check scripts/lib.mjs && node --check scripts/preview.mjs",
+    "test": "node --test",
+    "check": "npm run lint && npm run build && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.19"
+  }
+}

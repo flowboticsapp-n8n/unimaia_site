@@ -1,0 +1,72 @@
+<!-- page: {
+  "title": "Como chegar e contato | Unimaia Lajedo-PE",
+  "description": "Unimaia Clínica Médica e Odontológica: Rua Major Capitú, 75, Centro, Lajedo-PE. Mapa, horário de atendimento, WhatsApp e Instagram.",
+  "nav": "contato"
+} -->
+
+    <section class="py-14 bg-gradient-to-b from-brand-50 to-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+        <p class="text-xs font-bold uppercase tracking-widest text-brand-700">Fale com a gente</p>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900">Como chegar e contato</h1>
+        <p class="text-slate-600 max-w-2xl mx-auto">Estamos no Centro de {{site.city}}. Chame no WhatsApp para agendar ou tirar dúvidas.</p>
+      </div>
+    </section>
+
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+
+          <div class="lg:col-span-5 p-6 sm:p-8 space-y-6">
+            <div class="flex gap-4">
+              <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
+              <div>
+                <h2 class="font-bold text-slate-900">Endereço</h2>
+                <address class="not-italic text-sm text-slate-600 mt-1">{{site.street}} - {{site.neighborhood}}<br>{{site.city}} - {{site.state}}, CEP {{site.cep}}</address>
+                <a href="{{site.mapsLink}}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:underline mt-2">
+                  <i data-lucide="navigation" class="w-4 h-4"></i> Abrir rota no Google Maps
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-5 h-5"></i></span>
+              <div>
+                <h2 class="font-bold text-slate-900">Horário de atendimento</h2>
+                <p class="text-sm text-slate-600 mt-1">{{site.hoursLong}}</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-5 h-5"></i></span>
+              <div>
+                <h2 class="font-bold text-slate-900">WhatsApp</h2>
+                <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="text-sm font-bold text-emerald-800 hover:underline">{{site.whatsappDisplay}}</a>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="instagram" class="w-5 h-5"></i></span>
+              <div>
+                <h2 class="font-bold text-slate-900">Instagram</h2>
+                <a href="{{site.instagramUrl}}" target="_blank" rel="noopener" class="text-sm font-bold text-brand-700 hover:underline">@{{site.instagram}}</a>
+              </div>
+            </div>
+
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+              <i data-lucide="calendar" class="w-5 h-5"></i> Agendar atendimento
+            </a>
+          </div>
+
+          <!-- Mapa: só carrega quando chega perto da tela (loading="lazy") -->
+          <div class="lg:col-span-7 bg-slate-200 min-h-[360px]">
+            <iframe
+              title="Mapa: Unimaia em {{site.city}}-{{site.state}}"
+              src="{{site.mapsEmbed}}"
+              class="w-full h-full min-h-[360px] border-0"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>

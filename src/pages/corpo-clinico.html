@@ -1,0 +1,52 @@
+<!-- page: {
+  "title": "Equipe | Unimaia Lajedo-PE",
+  "description": "Conheça a equipe de médicos, dentistas e terapeutas da Unimaia Clínica Médica e Odontológica, em Lajedo-PE.",
+  "nav": "corpo-clinico"
+} -->
+
+    <section class="py-14 bg-gradient-to-b from-brand-50 to-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+        <p class="text-xs font-bold uppercase tracking-widest text-brand-700">Quem cuida de você</p>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900">Nossa equipe</h1>
+        <p class="text-slate-600 max-w-2xl mx-auto">Médicos, dentistas e terapeutas que atendem na Unimaia.</p>
+      </div>
+    </section>
+
+    <!--
+      MODELO DE CARD: quando a clínica enviar os dados, repetir um card por profissional com
+      nome, registro (CRM-PE, CRO-PE, CRP, CREFITO), especialidade e foto real (WebP, 400x400,
+      com loading="lazy", width e height). Não usar foto de banco de imagem para profissional real.
+    -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto bg-white rounded-3xl border border-slate-200 p-8 text-center">
+          <span class="w-14 h-14 mx-auto rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="users" class="w-7 h-7"></i></span>
+          <h2 class="text-xl font-extrabold text-slate-900 mt-4">Em breve, a apresentação dos nossos profissionais</h2>
+          <p class="text-sm text-slate-600 mt-2">Enquanto isso, a recepção informa quais profissionais atendem cada especialidade e os dias de atendimento.</p>
+          <a href="{{site.whatsappLink}}?text=Ol%C3%A1!%20Quais%20profissionais%20atendem%20na%20Unimaia%3F" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-6 py-3 rounded-xl transition">
+            <i data-lucide="message-circle" class="w-5 h-5"></i> Perguntar no WhatsApp
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" aria-hidden="true">
+          <div class="bg-white rounded-2xl border border-dashed border-slate-300 p-5 flex items-center gap-4 opacity-70">
+            <span class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center shrink-0"><i data-lucide="user-round" class="w-7 h-7"></i></span>
+            <span><span class="block font-bold text-slate-700">Clínica Geral</span><span class="block text-xs text-slate-500">CRM-PE</span></span>
+          </div>
+          <div class="bg-white rounded-2xl border border-dashed border-slate-300 p-5 flex items-center gap-4 opacity-70">
+            <span class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center shrink-0"><i data-lucide="user-round" class="w-7 h-7"></i></span>
+            <span><span class="block font-bold text-slate-700">Odontologia</span><span class="block text-xs text-slate-500">CRO-PE</span></span>
+          </div>
+          <div class="bg-white rounded-2xl border border-dashed border-slate-300 p-5 flex items-center gap-4 opacity-70">
+            <span class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center shrink-0"><i data-lucide="user-round" class="w-7 h-7"></i></span>
+            <span><span class="block font-bold text-slate-700">Psicologia</span><span class="block text-xs text-slate-500">CRP</span></span>
+          </div>
+          <div class="bg-white rounded-2xl border border-dashed border-slate-300 p-5 flex items-center gap-4 opacity-70">
+            <span class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center shrink-0"><i data-lucide="user-round" class="w-7 h-7"></i></span>
+            <span><span class="block font-bold text-slate-700">Fisioterapia</span><span class="block text-xs text-slate-500">CREFITO</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- include:cta -->

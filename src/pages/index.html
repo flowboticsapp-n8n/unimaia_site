@@ -1,0 +1,206 @@
+<!-- page: {
+  "title": "Unimaia | Clínica Médica e Odontológica em Lajedo-PE",
+  "description": "Especialistas em um só lugar: 16 especialidades médicas, odontologia, psicologia, fisioterapia, quiropraxia, exames laboratoriais e ultrassom no Centro de Lajedo-PE. Agende pelo WhatsApp.",
+  "nav": "inicio",
+  "jsonld": true
+} -->
+
+    <!-- HERO -->
+    <section class="relative pt-10 pb-16 lg:py-20 bg-gradient-to-b from-brand-50 via-white to-slate-50 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+          <p class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/70 border border-brand-200 text-brand-800 text-xs font-bold">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            Centro de {{site.city}} - {{site.state}}
+          </p>
+
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-brand-900 tracking-tight leading-tight">
+            Especialistas em um só lugar, <span class="text-brand-600">perto de você.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Na Unimaia você encontra 16 especialidades médicas, odontologia, psicologia, fisioterapia, quiropraxia, exames laboratoriais e ultrassom, tudo no mesmo endereço.
+          </p>
+
+          <ul class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 text-slate-700 text-xs font-semibold">
+            <li class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+              <i data-lucide="stethoscope" class="w-4 h-4 text-brand-600"></i> 22 serviços de saúde
+            </li>
+            <li class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700"></i> Agendamento pelo WhatsApp
+            </li>
+            <li class="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+              <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i> {{site.hoursShort}}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Atalhos de agendamento: cada botão abre o formulário já na área certa -->
+        <div class="lg:col-span-5">
+          <div class="bg-white p-6 sm:p-7 rounded-3xl shadow-xl border border-slate-200">
+            <h2 class="font-extrabold text-slate-900 text-xl">Do que você precisa?</h2>
+            <p class="text-sm text-slate-500 mt-1">Escolha e envie sua solicitação. A recepção confirma o horário pelo WhatsApp.</p>
+
+            <div class="mt-5 space-y-3">
+              <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" class="open-booking-modal-btn group flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50 transition">
+                <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="stethoscope" class="w-5 h-5"></i></span>
+                <span class="flex-1">
+                  <span class="block font-bold text-slate-900">Consulta médica ou terapia</span>
+                  <span class="block text-xs text-slate-500">Clínica geral, especialistas, psicologia, fisioterapia</span>
+                </span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-600"></i>
+              </a>
+              <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" class="open-booking-modal-btn group flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50 transition">
+                <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="smile" class="w-5 h-5"></i></span>
+                <span class="flex-1">
+                  <span class="block font-bold text-slate-900">Dentista</span>
+                  <span class="block text-xs text-slate-500">Avaliação e tratamento odontológico</span>
+                </span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-600"></i>
+              </a>
+              <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" class="open-booking-modal-btn group flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-500 hover:bg-brand-50 transition">
+                <span class="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center shrink-0"><i data-lucide="microscope" class="w-5 h-5"></i></span>
+                <span class="flex-1">
+                  <span class="block font-bold text-slate-900">Exames</span>
+                  <span class="block text-xs text-slate-500">Exames laboratoriais e ultrassom</span>
+                </span>
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-600"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREAS DE ATENDIMENTO -->
+    <section class="py-16 bg-white border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900">Cuidado completo, sem precisar ir a vários lugares</h2>
+          <p class="text-slate-600 mt-2">Conheça as áreas de atendimento da Unimaia.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="/medicina" class="card-hover bg-slate-50 rounded-3xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="stethoscope" class="w-6 h-6"></i></span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-5">Especialidades médicas</h3>
+            <p class="text-sm text-slate-600 mt-2 flex-1">16 especialidades, da clínica geral à cardiologia, pediatria e neurologia.</p>
+            <span class="mt-4 text-sm font-bold text-brand-700 flex items-center gap-1">Ver especialidades <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+          </a>
+          <a href="/medicina#terapias" class="card-hover bg-slate-50 rounded-3xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="heart-handshake" class="w-6 h-6"></i></span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-5">Terapias</h3>
+            <p class="text-sm text-slate-600 mt-2 flex-1">Psicologia, fisioterapia e quiropraxia para corpo e mente.</p>
+            <span class="mt-4 text-sm font-bold text-brand-700 flex items-center gap-1">Ver terapias <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+          </a>
+          <a href="/odontologia" class="card-hover bg-slate-50 rounded-3xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="smile" class="w-6 h-6"></i></span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-5">Odontologia</h3>
+            <p class="text-sm text-slate-600 mt-2 flex-1">Atendimento odontológico no mesmo lugar da sua consulta médica.</p>
+            <span class="mt-4 text-sm font-bold text-brand-700 flex items-center gap-1">Ver odontologia <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+          </a>
+          <a href="/exames" class="card-hover bg-slate-50 rounded-3xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="microscope" class="w-6 h-6"></i></span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-5">Exames</h3>
+            <p class="text-sm text-slate-600 mt-2 flex-1">Exames laboratoriais e ultrassom sem sair da clínica.</p>
+            <span class="mt-4 text-sm font-bold text-brand-700 flex items-center gap-1">Ver exames <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTA COMPLETA (mesma da arte de especialidades) -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-xs font-bold uppercase tracking-widest text-brand-700">Tudo o que oferecemos</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900 mt-2">22 serviços de saúde no mesmo endereço</h2>
+        <ul class="mt-8 flex flex-wrap justify-center gap-2.5 text-sm font-semibold text-brand-900">
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Clínica Geral</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Cardiologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Dermatologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Endocrinologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Gastroenterologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Geriatria</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Ginecologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Hepatologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Neurologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Nutrologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Obstetrícia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Oftalmologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Ortopedia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Pediatria</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Pneumologia</li>
+          <li class="px-3.5 py-2 bg-white rounded-xl border border-slate-200">Psiquiatria</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Psicologia</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Fisioterapia</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Quiropraxia</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Odontologia</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Exames laboratoriais</li>
+          <li class="px-3.5 py-2 bg-brand-50 rounded-xl border border-brand-200">Ultrassom</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VANTAGENS -->
+    <section class="py-16 bg-white border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900 text-center max-w-2xl mx-auto">Por que escolher a Unimaia</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-4"><i data-lucide="users" class="w-6 h-6"></i></span>
+            <h3 class="font-bold text-slate-900 text-lg">Vários especialistas, um endereço</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Médicos, dentistas e terapeutas no mesmo lugar. Menos deslocamento para você e sua família.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-4"><i data-lucide="flask-conical" class="w-6 h-6"></i></span>
+            <h3 class="font-bold text-slate-900 text-lg">Exames na própria clínica</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Exames laboratoriais e ultrassom feitos aqui mesmo, sem procurar outro local.</p>
+          </div>
+          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-4"><i data-lucide="message-circle" class="w-6 h-6"></i></span>
+            <h3 class="font-bold text-slate-900 text-lg">Agendamento rápido</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Envie sua solicitação pelo site ou chame direto no WhatsApp. A recepção confirma o horário.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERGUNTAS FREQUENTES (sem JavaScript, usa <details>) -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-900 text-center">Perguntas frequentes</h2>
+        <div class="mt-8 space-y-3">
+          <details class="faq bg-white rounded-2xl border border-slate-200 p-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-slate-900">
+              Como faço para agendar?
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0"></i>
+            </summary>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">Clique em "Agendar", escolha o serviço e envie a solicitação. Ela abre no WhatsApp da recepção, que confirma o dia e o horário. Se preferir, chame direto no {{site.whatsappDisplay}}.</p>
+          </details>
+          <details class="faq bg-white rounded-2xl border border-slate-200 p-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-slate-900">
+              Onde fica a clínica?
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0"></i>
+            </summary>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">Na {{site.street}}, {{site.neighborhood}}, {{site.city}}-{{site.state}}. Veja o mapa na página <a href="/contato" class="font-semibold text-brand-700 underline">Como chegar</a>.</p>
+          </details>
+          <details class="faq bg-white rounded-2xl border border-slate-200 p-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-slate-900">
+              Qual o horário de atendimento?
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0"></i>
+            </summary>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">{{site.hoursLong}}. Os dias de cada especialista variam: a recepção informa a agenda pelo WhatsApp.</p>
+          </details>
+          <details class="faq bg-white rounded-2xl border border-slate-200 p-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-slate-900">
+              Vocês atendem convênio?
+              <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 text-slate-400 transition-transform shrink-0"></i>
+            </summary>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">Consulte pelo WhatsApp os convênios e as condições de pagamento para o serviço que você precisa.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- include:cta -->
