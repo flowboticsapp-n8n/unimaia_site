@@ -22,6 +22,7 @@ const baseConfig = {
   cep: '55385-000',
   whatsapp: '5587999999999',
   instagram: 'unimaia_',
+  googleBusinessUrl: 'https://share.google/abc',
   indexable: false,
 };
 
@@ -46,6 +47,11 @@ test('buildSiteData valida WhatsApp e Instagram', () => {
   const site = buildSiteData(baseConfig);
   assert.equal(site.whatsappLink, 'https://wa.me/5587999999999');
   assert.match(site.mapsEmbed, /^https:\/\/www\.google\.com\/maps\?q=Rua%20X%2C%201/);
+});
+
+test('buildSiteData exige link https para a página do Google', () => {
+  assert.throws(() => buildSiteData({ ...baseConfig, googleBusinessUrl: 'http://share.google/abc' }), /googleBusinessUrl/);
+  assert.throws(() => buildSiteData({ ...baseConfig, googleBusinessUrl: 'javascript:alert(1)' }), /googleBusinessUrl/);
 });
 
 test('buildSiteData exige "indexable" booleano (evita liberar o Google por engano)', () => {

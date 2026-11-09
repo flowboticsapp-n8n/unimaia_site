@@ -126,6 +126,10 @@ Quando o domínio da clínica estiver pronto, faça nesta ordem:
 - [ ] Revisão do texto pelo jurídico ou pela assessoria de LGPD da clínica.
 - [ ] Se ativar o Web Analytics do Cloudflare ou outra ferramenta (GA4, Meta Pixel), atualizar as seções 2, 3 e 5 da política e a data em `privacyUpdatedAt`.
 
+**Avaliações na página inicial:**
+- [ ] Confirmar com a clínica o uso das avaliações do Google no site, conferindo as regras de publicidade do CFM e do CFO sobre depoimentos. As escolhidas falam de atendimento e estrutura, não de resultado de tratamento.
+- [ ] Conferir se o link `googleBusinessUrl` (`site.config.json`) abre a página da clínica no Google.
+
 **Demais dados:**
 
 Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios) e **precisam ser validados** antes de publicar:
