@@ -1,0 +1,196 @@
+/* ==========================================================================
+   VittaIntegrada - Clínica Médica & Odontologia Avançada
+   Custom Styles, Animations & Medical Theme Extensions
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-navy: #0b2545;
+  --secondary-navy: #134074;
+  --teal-accent: #00a896;
+  --teal-light: #e6f7f5;
+  --teal-dark: #028090;
+  --gold-accent: #d4af37;
+  --surface-soft: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-dark);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glassmorphism & Card Accents */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(11, 37, 69, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(0, 168, 150, 0.15), 0 10px 15px -3px rgba(11, 37, 69, 0.08);
+}
+
+/* Custom Gradients */
+.medical-gradient-bg {
+  background: linear-gradient(135deg, #0b2545 0%, #134074 50%, #028090 100%);
+}
+
+.teal-gradient-bg {
+  background: linear-gradient(135deg, #00a896 0%, #028090 100%);
+}
+
+.subtle-badge-gradient {
+  background: linear-gradient(90deg, rgba(0,168,150,0.12) 0%, rgba(2,128,144,0.06) 100%);
+}
+
+/* Hero Badge Glow */
+.hero-glow-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Pulse Badge */
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+.pulse-badge {
+  animation: pulseSubtle 3s infinite ease-in-out;
+}
+
+/* Float Animation */
+@keyframes floatAnimation {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floating-card {
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.floating-card-delayed {
+  animation: floatAnimation 4.5s ease-in-out 1s infinite;
+}
+
+/* Active Tabs Transition */
+.tab-btn.active {
+  background-color: #00a896;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 168, 150, 0.35);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Modal Backdrop Animations */
+.modal-enter {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.modal-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 250ms ease-out, transform 250ms ease-out;
+}
+.modal-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
+
+/* Checkbox and Radio Custom styling */
+.custom-radio:checked + label {
+  border-color: #00a896;
+  background-color: #f0fdfa;
+  color: #00a896;
+}
+
+/* WhatsApp Floating Notification Ping */
+.notification-ping {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ef4444;
+  border: 2px solid #ffffff;
+}
+
+.notification-ping::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ef4444;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.75;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
