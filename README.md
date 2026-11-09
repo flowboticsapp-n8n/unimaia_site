@@ -89,6 +89,7 @@ O script precisa de Python com Pillow (com suporte a AVIF) e numpy. Ele não rod
 | `logo-horizontal-dark-v1-{40,80}` | Rodapé, fundo escuro: o "V" vira branco. |
 | `logo-vertical-v1-{320,640}` e `-dark` | Composição original, para usos maiores (redes sociais, materiais). |
 | `simbolo-v1-256` | Só o símbolo "M". |
+| `flowbotics-dark-v1-{24,48}` | Crédito "Desenvolvido por" no rodapé (logo da Flowbotics, com "Flow" em branco). |
 
 Cada variação sai em **AVIF**, **WebP** e **PNG**. O `<picture>` do site entrega AVIF (cerca de 6 KB) para quem suporta e cai para WebP e PNG nos navegadores antigos. Também gera `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` e `icon-512.png` em `src/static/`.
 
@@ -118,6 +119,14 @@ Quando o domínio da clínica estiver pronto, faça nesta ordem:
 - [ ] Confirmar com a clínica os itens abaixo.
 
 ### Dados a confirmar com a clínica
+
+**Política de Privacidade (`/privacidade`):**
+- [ ] Canal para pedidos dos titulares (`privacyContact` no `site.config.json`), de preferência um e-mail.
+- [ ] Nome do Encarregado pelo tratamento de dados (`dpoName`).
+- [ ] Revisão do texto pelo jurídico ou pela assessoria de LGPD da clínica.
+- [ ] Se ativar o Web Analytics do Cloudflare ou outra ferramenta (GA4, Meta Pixel), atualizar as seções 2, 3 e 5 da política e a data em `privacyUpdatedAt`.
+
+**Demais dados:**
 
 Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios) e **precisam ser validados** antes de publicar:
 

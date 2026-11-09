@@ -41,9 +41,18 @@
         </div>
       </div>
 
-      <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center md:text-left">
-        <p>&copy; {{site.year}} {{site.legalName}} · CNPJ {{site.cnpj}}</p>
-        <p>{{site.technicalDirector}}</p>
+      <div class="pt-6 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-5 text-xs text-slate-400 text-center lg:text-left">
+        <div class="space-y-1">
+          <p>&copy; {{site.year}} {{site.legalName}} · CNPJ {{site.cnpj}}</p>
+          <p>{{site.technicalDirector}}</p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+          <a href="/privacidade" data-nav="privacidade" class="hover:text-white hover:underline underline-offset-2 transition">Política de Privacidade</a>
+          <a href="https://flowbotics.app.br" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-90 transition" aria-label="Desenvolvido por Flowbotics (abre em nova aba)">
+            <span>Desenvolvido por</span>
+            <!-- include:flowbotics -->
+          </a>
+        </div>
       </div>
     </div>
   </footer>

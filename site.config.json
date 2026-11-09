@@ -21,5 +21,9 @@
     "opens": "09:00",
     "closes": "18:00"
   },
+  "_privacidade": "Campos da Política de Privacidade (/privacidade). Os valores entre colchetes ainda precisam ser preenchidos pela clínica.",
+  "privacyContact": "[canal de atendimento ao titular, a definir pela clínica]",
+  "dpoName": "[nome do encarregado, a definir pela clínica]",
+  "privacyUpdatedAt": "9 de novembro de 2026",
   "technicalDirector": "Responsável técnico: [nome do médico] · CRM-PE [número]"
 }
