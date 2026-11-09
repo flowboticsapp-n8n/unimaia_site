@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odontologia Integrada & Alta Complexidade | VittaIntegrada</title>
+  <meta name="description" content="Consultório odontológico de alta complexidade com sedação consciente com óxido nitroso, alinhadores invisíveis, implantes e estética dental em São Paulo.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 500: '#14b8a6',
+              600: '#00a896', 700: '#028090', 800: '#056676', 900: '#0b2545', 950: '#07182d',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-900 text-slate-300 text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span>Segunda a Sexta: 07h às 20h | Sábado: 08h às 14h</span>
+        <span class="hidden md:inline">•</span>
+        <span class="hidden md:inline">Av. Paulista, 2100 - Bela Vista, SP</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:1133334444" class="hover:text-white transition">(11) 3333-4444</a>
+        <span>|</span>
+        <a href="https://wa.me/5511999998888" target="_blank" class="hover:text-emerald-400 text-emerald-400 font-bold">(11) 99999-8888</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="main-navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-900 to-brand-600 flex items-center justify-center text-white shadow-md">
+          <i data-lucide="cross" class="w-5 h-5 text-white"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-extrabold text-brand-900 font-heading">Vitta<span class="text-brand-600">Integrada</span></span>
+          <span class="text-[9px] uppercase font-bold tracking-widest text-slate-400 -mt-1">Medicina & Odontologia</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="index.html" class="nav-link hover:text-brand-600 transition">Início</a>
+        <a href="medicina.html" class="nav-link hover:text-brand-600 transition">Medicina</a>
+        <a href="odontologia.html" class="nav-link hover:text-brand-600 transition">Odontologia</a>
+        <a href="exames.html" class="nav-link hover:text-brand-600 transition">Exames</a>
+        <a href="corpo-clinico.html" class="nav-link hover:text-brand-600 transition">Corpo Clínico</a>
+        <a href="convenios.html" class="nav-link hover:text-brand-600 transition">Convênios</a>
+        <a href="contato.html" class="nav-link hover:text-brand-600 transition">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button class="open-booking-modal-btn bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 transition flex items-center gap-2" data-prefill-area="dental">
+          <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Dentista
+        </button>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <span class="font-bold text-lg text-brand-900">Menu</span>
+        <button id="close-mobile-menu" class="p-2 text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <nav class="flex flex-col gap-2 py-4 text-base font-semibold text-slate-700">
+        <a href="index.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Início</a>
+        <a href="medicina.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Especialidades Médicas</a>
+        <a href="odontologia.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50 text-blue-600 font-bold">Odontologia Integrada</a>
+        <a href="exames.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Exames & Diagnósticos</a>
+        <a href="corpo-clinico.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Corpo Clínico</a>
+        <a href="convenios.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Convênios Aceitos</a>
+        <a href="contato.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Como Chegar & Contato</a>
+      </nav>
+    </div>
+    <button class="open-booking-modal-btn w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-md" data-prefill-area="dental">
+      Agendar Avaliação
+    </button>
+  </aside>
+
+  <!-- BANNER ODONTOLOGIA -->
+  <section class="py-14 bg-gradient-to-b from-blue-50 via-white to-slate-50 border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-700 bg-blue-100/60 px-3 py-1 rounded-full border border-blue-200">
+        Odontologia Sem Medo & Sem Dor
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 font-heading">
+        Consultório Odontológico Integrado
+      </h1>
+      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+        Tecnologia digital, escaneamento 3D sem moldagens de massa, sedação consciente com óxido nitroso e o conforto de uma estrutura médica completa.
+      </p>
+    </div>
+  </section>
+
+  <!-- DESTAQUE SEDAÇÃO CONSCIENTE -->
+  <section class="py-14 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider">
+            Exclusividade VittaIntegrada
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold font-heading">
+            Tem fobia de dentista? Conheça a Sedação com Óxido Nitroso.
+          </h2>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+            Você inala uma mistura suave de oxigênio e gás relaxante através de uma máscara nasal. O medo e a ansiedade desaparecem em 3 minutos. Você permanece acordado, respondendo comandos, mas 100% calmo e sem dor.
+          </p>
+          <ul class="text-xs text-slate-200 space-y-1.5 pt-1">
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Efeito passa 3 minutos após o término do procedimento</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Não precisa de jejum e você pode dirigir de volta para casa</li>
+            <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i> Indicado para cirurgias de siso, implantes, canal ou até limpezas</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-5 text-center lg:text-right">
+          <a href="https://wa.me/5511999998888?text=Olá,%20tenho%20medo%20de%20dentista%20e%20gostaria%20de%20saber%20sobre%20a%20sedação%20com%20óxido%20nitroso" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-brand-950 font-bold px-6 py-3.5 rounded-xl text-xs sm:text-sm shadow-lg transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Tirar Dúvidas sobre Sedação
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRATAMENTOS ODONTOLÓGICOS EM GRADE -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
+          Tratamentos & Procedimentos Disponíveis
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">Clique para agendar sua avaliação individualizada com nossa equipe de especialistas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- 1. Ortodontia & Alinhadores -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Alinhadores Invisíveis & Ortodontia</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Invisalign e alinhadores transparentes. Planejamento digital com scanner 3D: veja como seu sorriso vai ficar antes mesmo de iniciar o tratamento.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Ortodontia & Alinhadores Invisíveis">
+            Agendar Avaliação Ortodôntica
+          </button>
+        </div>
+
+        <!-- 2. Implantes & Carga Imediata -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+              <i data-lucide="shield" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Implantes & Carga Imediata</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Recuperação definitiva de dentes perdidos com implantes de titânio suíço e zircônia. Opção de colocar o dente fixo provisório no mesmo dia da cirurgia.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Implantodontia & Carga Imediata">
+            Agendar Avaliação de Implante
+          </button>
+        </div>
+
+        <!-- 3. Estética do Sorriso -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4">
+              <i data-lucide="gem" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Facetas, Lentes & Clareamento</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Lentes de contato de porcelana ultrafinas, facetas em resina composta e clareamento dental a laser com proteção gengival avançada.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Estética Dental (Facetas, Lentes, Clareamento)">
+            Agendar Avaliação Estética
+          </button>
+        </div>
+
+        <!-- 4. Endodontia (Canal) -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+              <i data-lucide="zap" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Tratamento de Canal em 1 Sessão</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Endodontia mecanizada com motores rotatórios e localizadores apicais. Elimine a dor de dente rapidamente em sessão única, preservando seu dente natural.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Endodontia Mecanizada (Canal em Sessão Única)">
+            Agendar Canal
+          </button>
+        </div>
+
+        <!-- 5. Odontopediatria -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
+              <i data-lucide="smile-plus" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Odontopediatria Humanizada</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Atendimento lúdico e afetuoso para crianças e bebês. Prevenção de cáries, aplicação de selantes e frenectomia lingual segura.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Odontopediatria (Crianças e Bebês)">
+            Agendar Odontopediatria
+          </button>
+        </div>
+
+        <!-- 6. Bruxismo & DTM -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-violet-100 text-violet-700 flex items-center justify-center mb-4">
+              <i data-lucide="brain" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 font-heading">Bruxismo & Ronco / Apneia</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Placas miorrelaxantes digitais para alívio de dor de cabeça e desgaste dental, além de aparelhos intraorais avançados para ronco e apneia do sono.
+            </p>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition" data-prefill-area="dental" data-prefill-spec="Bruxismo & Placa de Relaxamento (DTM)">
+            Agendar Tratamento de Bruxismo
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION FINAL -->
+  <section class="py-14 bg-brand-900 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">Agende sua avaliação odontológica hoje mesmo</h2>
+      <p class="text-slate-300 text-xs sm:text-sm">Trabalhamos com planos odontológicos credenciados e parcelamento em até 12x para procedimentos particulares.</p>
+      <a href="https://wa.me/5511999998888?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação%20odontológica" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-brand-950 font-bold px-7 py-3 rounded-xl transition shadow-lg">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Falar com a Equipe no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-brand-950 text-slate-400 text-xs py-10 border-t border-white/10 text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-4">
+      <p>&copy; 2026 Clínica VittaIntegrada. Responsável Técnica Odontologia: Dra. Camila Vasconcellos - CRO 89.412</p>
+      <div class="flex justify-center gap-4 text-slate-500">
+        <a href="index.html" class="hover:text-white">Início</a>
+        <a href="medicina.html" class="hover:text-white">Medicina</a>
+        <a href="exames.html" class="hover:text-white">Exames</a>
+        <a href="convenios.html" class="hover:text-white">Convênios</a>
+        <a href="contato.html" class="hover:text-white">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

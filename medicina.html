@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Especialidades Médicas | VittaIntegrada</title>
+  <meta name="description" content="Centro médico de multiespecialidades em São Paulo. Cardiologia, Ginecologia, Pediatria, Ortopedia, Dermatologia, Endocrinologia com agendamento ágil.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 500: '#14b8a6',
+              600: '#00a896', 700: '#028090', 800: '#056676', 900: '#0b2545', 950: '#07182d',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- TOP BAR -->
+  <div class="bg-brand-900 text-slate-300 text-xs py-2 px-4 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4">
+        <span>Segunda a Sexta: 07h às 20h | Sábado: 08h às 14h</span>
+        <span class="hidden md:inline">•</span>
+        <span class="hidden md:inline">Av. Paulista, 2100 - Bela Vista, SP</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:1133334444" class="hover:text-white transition">(11) 3333-4444</a>
+        <span>|</span>
+        <a href="https://wa.me/5511999998888" target="_blank" class="hover:text-emerald-400 text-emerald-400 font-bold">(11) 99999-8888</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="main-navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-900 to-brand-600 flex items-center justify-center text-white shadow-md">
+          <i data-lucide="cross" class="w-5 h-5 text-white"></i>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-2xl font-extrabold text-brand-900 font-heading">Vitta<span class="text-brand-600">Integrada</span></span>
+          <span class="text-[9px] uppercase font-bold tracking-widest text-slate-400 -mt-1">Medicina & Odontologia</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="index.html" class="nav-link hover:text-brand-600 transition">Início</a>
+        <a href="medicina.html" class="nav-link hover:text-brand-600 transition">Medicina</a>
+        <a href="odontologia.html" class="nav-link hover:text-brand-600 transition">Odontologia</a>
+        <a href="exames.html" class="nav-link hover:text-brand-600 transition">Exames</a>
+        <a href="corpo-clinico.html" class="nav-link hover:text-brand-600 transition">Corpo Clínico</a>
+        <a href="convenios.html" class="nav-link hover:text-brand-600 transition">Convênios</a>
+        <a href="contato.html" class="nav-link hover:text-brand-600 transition">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button class="open-booking-modal-btn bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-brand-600/25 transition flex items-center gap-2">
+          <i data-lucide="calendar" class="w-4 h-4"></i> Agendar Consulta
+        </button>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 p-6 flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <span class="font-bold text-lg text-brand-900">Menu</span>
+        <button id="close-mobile-menu" class="p-2 text-slate-400 hover:text-slate-700"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <nav class="flex flex-col gap-2 py-4 text-base font-semibold text-slate-700">
+        <a href="index.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Início</a>
+        <a href="medicina.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50 text-brand-700">Especialidades Médicas</a>
+        <a href="odontologia.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Odontologia Integrada</a>
+        <a href="exames.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Exames & Diagnósticos</a>
+        <a href="corpo-clinico.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Corpo Clínico</a>
+        <a href="convenios.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Convênios Aceitos</a>
+        <a href="contato.html" class="mobile-nav-link py-2.5 px-3 rounded-lg hover:bg-slate-50">Como Chegar & Contato</a>
+      </nav>
+    </div>
+    <button class="open-booking-modal-btn w-full bg-brand-600 text-white font-bold py-3 rounded-xl shadow-md">
+      Agendar Agora
+    </button>
+  </aside>
+
+  <!-- BANNER DA PÁGINA -->
+  <section class="py-14 bg-gradient-to-b from-brand-50 to-white border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-white px-3 py-1 rounded-full border border-brand-200">
+        Corpo Clínico de Excelência
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900 font-heading">
+        Especialidades Médicas
+      </h1>
+      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+        Consultas com escuta atenta, sem correria e com suporte diagnóstico de ponta. Atendimento humanizado para todas as fases da sua vida.
+      </p>
+    </div>
+  </section>
+
+  <!-- LISTA DE ESPECIALIDADES MÉDICAS -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. Cardiologia -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-4">
+              <i data-lucide="heart" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Cardiologia Clínica</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Prevenção cardiovascular, acompanhamento de hipertensão, dor no peito, arritmias, colesterol elevado e avaliação de risco cirúrgico pré-operatório.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Eletrocardiograma (ECG) no local</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> MAPA e Holter 24h</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Cardiologia & Eletrocardiograma">
+            Agendar Cardiologista
+          </button>
+        </div>
+
+        <!-- 2. Ginecologia & Obstetrícia -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
+              <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Ginecologia & Obstetrícia</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Saúde integral da mulher em todas as idades, pré-natal acolhedor, coleta de Papanicolau, inserção de DIU com anestesia local e climatério/menopausa.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Inserção de DIU (Mirena/Kyleena/Cobre)</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Ultrassonografia transvaginal e obstétrica</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Ginecologia & Obstetrícia">
+            Agendar Ginecologista
+          </button>
+        </div>
+
+        <!-- 3. Pediatria -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+              <i data-lucide="baby" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Pediatria & Puericultura</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Acompanhamento detalhado do crescimento físico e desenvolvimento neuropsicomotor desde o primeiro mês de vida, suporte para amamentação e vacinas.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Consultório lúdico para crianças</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Integração com Odontopediatria</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Pediatria & Puericultura">
+            Agendar Pediatra
+          </button>
+        </div>
+
+        <!-- 4. Ortopedia -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4">
+              <i data-lucide="bone" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Ortopedia & Coluna</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Tratamento de lombalgias, hérnia de disco, dores no joelho e ombro, tendinites, artrite, lesões esportivas e infiltrações analgésicas guiadas.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Infiltrações articulares com ácido hialurônico</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Avaliação postural preventiva</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Ortopedia & Traumatologia">
+            Agendar Ortopedista
+          </button>
+        </div>
+
+        <!-- 5. Dermatologia -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+              <i data-lucide="sun" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Dermatologia Clínica & Estética</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Mapeamento de pintas corporais, tratamento de acne resistente, manchas/melasma, queda capilar e procedimentos estéticos médicos seguros.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Dermatoscopia digital de pintas</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Toxina botulínica e bioestimuladores</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Dermatologia Clínica & Estética">
+            Agendar Dermatologista
+          </button>
+        </div>
+
+        <!-- 6. Endocrinologia -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:border-brand-500 hover:shadow-lg transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
+              <i data-lucide="gauge" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-heading">Endocrinologia & Metabologia</h3>
+            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+              Tratamento humanizado do diabetes, nódulos tireoidianos, alterações hormonais, metabolismo lento e emagrecimento saudável sustentável.
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-200/60 text-xs font-semibold text-slate-700 space-y-1">
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Bioimpedância clínica de alta precisão</div>
+              <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-teal-600"></i> Acompanhamento cirúrgico integrado</div>
+            </div>
+          </div>
+          <button class="open-booking-modal-btn mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs transition" data-prefill-area="medical" data-prefill-spec="Endocrinologia & Metabologia">
+            Agendar Endocrinologista
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION BANNER -->
+  <section class="py-14 bg-brand-900 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold font-heading">Precisa de consulta médica para esta semana?</h2>
+      <p class="text-slate-300 text-xs sm:text-sm">Consulte nossos horários vagos e convênios atendidos diretamente com nossa recepção.</p>
+      <a href="https://wa.me/5511999998888?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta%20médica" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-brand-950 font-bold px-7 py-3 rounded-xl transition shadow-lg">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Agendar pelo WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-brand-950 text-slate-400 text-xs py-10 border-t border-white/10 text-center">
+    <div class="max-w-7xl mx-auto px-4 space-y-4">
+      <p>&copy; 2026 Clínica VittaIntegrada. Diretor Técnico Médico: Dr. Roberto Albuquerque - CRM 142.890</p>
+      <div class="flex justify-center gap-4 text-slate-500">
+        <a href="index.html" class="hover:text-white">Início</a>
+        <a href="odontologia.html" class="hover:text-white">Odontologia</a>
+        <a href="exames.html" class="hover:text-white">Exames</a>
+        <a href="convenios.html" class="hover:text-white">Convênios</a>
+        <a href="contato.html" class="hover:text-white">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Universal Modal Script & Widget -->
+  <script src="js/main.js"></script>
+</body>
+</html>
