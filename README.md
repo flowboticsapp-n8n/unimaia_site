@@ -58,6 +58,7 @@ A configuração está em `wrangler.jsonc`: publica a pasta `dist/`, serve `/med
    - **Production branch:** `main`
    - **Build command:** `npm run build`
    - **Deploy command:** `npx wrangler deploy` (padrão)
+   - **Branches que não são a `main`** rodam `npx wrangler preview` e geram uma prévia com endereço próprio, sem mexer no site no ar. Esse comando exige o bloco `"previews"` no `wrangler.jsonc` (já incluso).
    - O Node vem do arquivo `.node-version` (22). As dependências são instaladas automaticamente a partir do `package-lock.json`.
 3. Depois disso, cada push na `main` publica o site sozinho. Antes de ter domínio próprio, o site fica em **https://unimaia-site.flowboticsapp.workers.dev/**.
 4. **Domínio próprio:** em **Settings → Domains & Routes**. No Workers, o domínio precisa estar gerenciado pelo Cloudflare (DNS apontado para ele, plano grátis). Se o domínio for do Registro.br, troque os servidores DNS para os do Cloudflare.

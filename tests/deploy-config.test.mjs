@@ -13,6 +13,11 @@ test('wrangler.jsonc publica a pasta gerada pelo build, sem código de Worker', 
   assert.match(config.compatibility_date, /^\d{4}-\d{2}-\d{2}$/);
 });
 
+test('tem bloco "previews" (exigido pelo `wrangler preview` dos builds de branch)', () => {
+  const config = readJsonc('wrangler.jsonc');
+  assert.equal(typeof config.previews, 'object', 'sem "previews", o build de prévia do Cloudflare falha');
+});
+
 test('404 e roteamento sem .html combinam com os arquivos do site', () => {
   const { assets } = readJsonc('wrangler.jsonc');
   assert.equal(assets.not_found_handling, '404-page');
