@@ -25,7 +25,9 @@ Abra http://127.0.0.1:4173. O preview imita o Cloudflare Pages: URLs sem `.html`
 npm test
 ```
 
-`npm run check` faz o build e roda os testes.
+`npm run check` roda a checagem de sintaxe, o build e os testes.
+
+**CI (GitHub Actions):** `.github/workflows/ci.yml` roda em todo pull request e push na `main`: `npm ci`, `npm audit`, checagem de sintaxe, build e testes.
 
 ## Estrutura
 
