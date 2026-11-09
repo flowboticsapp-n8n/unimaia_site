@@ -82,7 +82,7 @@ Quando você aplicar um conceito importante de segurança, banco ou arquitetura,
 ---
 
 ## Específico deste projeto (preencher em cada projeto)
-- **Stack:** site estático. HTML + Tailwind 3.4 (compilado no build) + JS puro. Build em Node (`scripts/build.mjs`), deploy no Cloudflare Pages (saída `dist/`).
+- **Stack:** site estático. HTML + Tailwind 3.4 (compilado no build) + JS puro. Build em Node (`scripts/build.mjs`), deploy no Cloudflare Workers com Static Assets (`wrangler.jsonc`, saída `dist/`).
 - **Como rodar / testar:** `npm install`, `npm run build`, `npm run preview` (http://127.0.0.1:4173), `npm test`. `npm run check` faz build e testes.
 - **Estrutura de pastas relevante:** `site.config.json` (dados da clínica), `src/pages/` (conteúdo), `src/partials/` (cabeçalho, rodapé, modal), `src/js/main.js`, `src/icons/` (SVG Lucide), `src/static/_headers` (cache e CSP).
 - **Convenções próprias:** dados da clínica só no `site.config.json` (usar `{{site.chave}}`); ícones com `<i data-lucide="nome">` (viram SVG no build); links internos sem `.html` (`/medicina`); sem scripts de CDN externo.

@@ -1,6 +1,6 @@
 # Site Unimaia · Clínica Médica e Odontológica (Lajedo-PE)
 
-Site estático, rápido e sem servidor: as páginas são geradas no build e publicadas no **Cloudflare Pages**.
+Site estático, rápido e sem servidor: as páginas são geradas no build e publicadas no **Cloudflare Workers (Static Assets)**, o caminho recomendado pelo Cloudflare para sites novos.
 O agendamento acontece pelo WhatsApp da clínica (o site não guarda dados de pacientes).
 
 ## Como rodar
@@ -19,7 +19,7 @@ npm run build
 npm run preview
 ```
 
-Abra http://127.0.0.1:4173. O preview imita o Cloudflare Pages: URLs sem `.html`, página 404 e cabeçalhos do `_headers`.
+Abra http://127.0.0.1:4173. O preview imita o Cloudflare: URLs sem `.html`, página 404 e cabeçalhos do `_headers`.
 
 ```bash
 npm test
@@ -46,17 +46,24 @@ npm test
 
 O build gera `dist/` (não vai para o Git).
 
-## Deploy no Cloudflare Pages
+## Deploy no Cloudflare (Workers com Static Assets)
 
-1. No painel do Cloudflare: **Workers & Pages → Create → Pages → Connect to Git** e escolha este repositório.
-2. Configuração de build:
+A configuração está em `wrangler.jsonc`: publica a pasta `dist/`, serve `/medicina` a partir de `medicina.html` e usa `404.html` para endereços inexistentes. Não há código de servidor.
+
+**Primeira vez (no painel do Cloudflare; os nomes dos botões podem mudar):**
+1. **Workers & Pages → Create → Workers → Import a repository** e escolha este repositório do GitHub.
+2. Configuração do build:
+   - **Production branch:** `main`
    - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - A versão do Node vem do arquivo `.node-version` (22).
-3. Depois do primeiro deploy, em **Custom domains**, ligue o domínio da clínica.
-4. Ative o **Web Analytics** do projeto (Metrics). Ele mede a velocidade real dos visitantes (Core Web Vitals) sem cookies. O `_headers` já libera o script dele.
+   - **Deploy command:** `npx wrangler deploy` (padrão)
+   - O Node vem do arquivo `.node-version` (22). As dependências são instaladas automaticamente a partir do `package-lock.json`.
+3. Depois disso, cada push na `main` publica o site sozinho. Antes de ter domínio, ele fica em `unimaia-site.<sua-conta>.workers.dev`.
+4. **Domínio próprio:** em **Settings → Domains & Routes**. No Workers, o domínio precisa estar gerenciado pelo Cloudflare (DNS apontado para ele, plano grátis). Se o domínio for do Registro.br, troque os servidores DNS para os do Cloudflare.
+5. **Velocidade dos usuários reais:** em **Analytics & Logs → Web Analytics**, adicione o site. Ele mede os Core Web Vitals sem cookies. O `_headers` já libera o script do Cloudflare.
 
-O Cloudflare já entrega tudo por CDN e com compressão Brotli. O `_headers` define:
+**Plano gratuito:** requisições de arquivos estáticos não são cobradas. O build tem 3.000 minutos por mês (o deste site leva poucos segundos), 1 build por vez e no máximo 20 min cada.
+
+O Cloudflare entrega tudo por CDN, com HTTPS e compressão Brotli. O `_headers` (em `src/static/`, copiado para `dist/`) define:
 - cache de 1 ano para `/assets/*` (CSS/JS têm hash no nome, então nunca ficam velhos);
 - cabeçalhos de segurança: CSP, nosniff, Referrer-Policy e Permissions-Policy.
 

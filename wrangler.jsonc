@@ -1,0 +1,15 @@
+// Configuração do deploy no Cloudflare Workers (Static Assets).
+// Site 100% estático: não há código de Worker ("main"), só os arquivos gerados em dist/.
+// Docs: https://developers.cloudflare.com/workers/static-assets/
+{
+  "name": "unimaia-site",
+  // Data de compatibilidade do runtime. Atualize só quando quiser adotar mudanças novas do Cloudflare.
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // /medicina serve medicina.html (os links do site já são sem .html).
+    "html_handling": "auto-trailing-slash",
+    // Endereço inexistente devolve dist/404.html com status 404.
+    "not_found_handling": "404-page"
+  }
+}
