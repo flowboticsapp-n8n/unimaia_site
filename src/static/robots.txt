@@ -1,2 +1,6 @@
+# Rastreamento liberado de propósito: o bloqueio da indexação é feito pela
+# <meta name="robots" content="noindex"> nas páginas (site.config.json: "indexable").
+# Se bloquear aqui com "Disallow: /", o Google não lê o noindex e pode listar o
+# endereço mesmo assim.
 User-agent: *
 Allow: /

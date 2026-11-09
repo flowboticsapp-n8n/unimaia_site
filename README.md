@@ -79,7 +79,23 @@ Ao colocar fotos reais (equipe, fachada, recepção):
 - use `<img src="/img/arquivo.webp" alt="descrição" width="400" height="400" loading="lazy" decoding="async">`;
 - não use `loading="lazy"` na imagem principal do topo da página.
 
-## Dados a confirmar com a clínica
+## Checklist para ir para produção (domínio próprio)
+
+> **Hoje o Google está BLOQUEADO de indexar o site** (`"indexable": false` no `site.config.json`).
+> Assim o endereço provisório `workers.dev` e as prévias de PR não aparecem nas buscas.
+> Todo build mostra um aviso no log enquanto isso estiver ligado.
+
+Quando o domínio da clínica estiver pronto, faça nesta ordem:
+
+- [ ] Ligar o domínio no Cloudflare (Settings → Domains & Routes) e conferir o site nele.
+- [ ] **Liberar a indexação:** trocar para `"indexable": true` no `site.config.json`.
+- [ ] Adicionar canonical apontando para o domínio, sitemap.xml e imagem de compartilhamento (og:image).
+- [ ] Desativar o endereço `workers.dev` do Worker, para não ter conteúdo duplicado no Google.
+- [ ] Cadastrar o domínio no Google Search Console e enviar o sitemap.
+- [ ] Desligar o GitHub Pages do repositório (Settings → Pages).
+- [ ] Confirmar com a clínica os itens abaixo.
+
+### Dados a confirmar com a clínica
 
 Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios) e **precisam ser validados** antes de publicar:
 
@@ -92,4 +108,3 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 - [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
 - [ ] Logo oficial em SVG para substituir a versão aproximada (`src/partials/logo.html` e `src/static/favicon.svg`).
-- [ ] Domínio do site, para adicionar canonical, sitemap e imagem de compartilhamento (og:image).

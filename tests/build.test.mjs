@@ -10,6 +10,7 @@ import {
   markActiveNav,
   jsonForScript,
   normalizeSvg,
+  robotsContent,
 } from '../scripts/lib.mjs';
 
 const baseConfig = {
@@ -21,6 +22,7 @@ const baseConfig = {
   cep: '55385-000',
   whatsapp: '5587999999999',
   instagram: 'unimaia_',
+  indexable: false,
 };
 
 test('escapeHtml neutraliza HTML', () => {
@@ -44,6 +46,18 @@ test('buildSiteData valida WhatsApp e Instagram', () => {
   const site = buildSiteData(baseConfig);
   assert.equal(site.whatsappLink, 'https://wa.me/5587999999999');
   assert.match(site.mapsEmbed, /^https:\/\/www\.google\.com\/maps\?q=Rua%20X%2C%201/);
+});
+
+test('buildSiteData exige "indexable" booleano (evita liberar o Google por engano)', () => {
+  assert.throws(() => buildSiteData({ ...baseConfig, indexable: undefined }), /indexable/);
+  assert.throws(() => buildSiteData({ ...baseConfig, indexable: 'false' }), /indexable/);
+});
+
+test('robotsContent: bloqueia tudo fora de produção e a 404 sempre', () => {
+  assert.equal(robotsContent({ indexable: false }, {}), 'noindex, nofollow');
+  assert.equal(robotsContent({ indexable: false }, { noindex: true }), 'noindex, nofollow');
+  assert.equal(robotsContent({ indexable: true }, {}), 'index, follow');
+  assert.equal(robotsContent({ indexable: true }, { noindex: true }), 'noindex, nofollow');
 });
 
 test('applyIncludes resolve partial dentro de partial e acusa partial inexistente', () => {

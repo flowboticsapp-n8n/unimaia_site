@@ -35,6 +35,9 @@ export function buildSiteData(config) {
   if (!/^[A-Za-z0-9._]{1,30}$/.test(config.instagram || '')) {
     throw new Error('site.config.json: "instagram" deve ser só o @, sem a arroba');
   }
+  if (typeof config.indexable !== 'boolean') {
+    throw new Error('site.config.json: "indexable" deve ser true ou false (false bloqueia o Google)');
+  }
   const fullAddress = `${config.street} - ${config.neighborhood}, ${config.city} - ${config.state}, ${config.cep}`;
   const mapsQuery = encodeURIComponent(fullAddress);
   return {
@@ -46,6 +49,14 @@ export function buildSiteData(config) {
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
     year: String(new Date().getFullYear()),
   };
+}
+
+/**
+ * Valor da <meta name="robots">. Enquanto o site não estiver no domínio próprio
+ * (indexable=false), nenhuma página entra no Google; a 404 nunca entra.
+ */
+export function robotsContent(site, meta = {}) {
+  return site.indexable && !meta.noindex ? 'index, follow' : 'noindex, nofollow';
 }
 
 /** Troca <!-- include:nome --> pelo conteúdo do partial (aceita partial dentro de partial). */
