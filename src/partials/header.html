@@ -1,25 +1,25 @@
-  <!-- Barra superior: horário, endereço e WhatsApp -->
-  <div class="bg-brand-900 text-slate-300 text-xs py-2 px-4">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-center sm:justify-between items-center gap-x-4 gap-y-1">
+  <!-- Barra superior (só no desktop): no celular, horário e endereço ficam no menu, para sobrar tela. -->
+  <div class="hidden lg:block bg-brand-900 text-slate-300 text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
       <div class="flex items-center gap-4">
         <span class="flex items-center gap-1.5">
           <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-400"></i>
           {{site.hoursShort}}
         </span>
-        <span class="hidden md:flex items-center gap-1.5">
+        <span class="flex items-center gap-1.5">
           <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-400"></i>
           {{site.street}} - {{site.neighborhood}}, {{site.city}}-{{site.state}}
         </span>
       </div>
-      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-1.5 font-bold text-emerald-300 hover:text-white transition">
+      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="flex items-center gap-1.5 font-bold text-emerald-300 hover:text-white transition">
         <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp {{site.whatsappDisplay}}
       </a>
     </div>
   </div>
 
-  <!-- Cabeçalho com menu -->
+  <!-- Cabeçalho: no celular só logo + menu (as ações ficam na barra fixa embaixo, perto do polegar). -->
   <header id="main-navbar" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-shadow duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between gap-4">
 
       <a href="/" class="shrink-0 hover:opacity-90 transition" aria-label="Unimaia - página inicial">
         <!-- include:logo -->
@@ -36,11 +36,11 @@
 
       <div class="flex items-center gap-2">
         <!-- Sem JavaScript, o botão abre o WhatsApp direto. Com JavaScript, abre o formulário. -->
-        <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-brand-600/25 transition active:scale-95 flex items-center gap-2">
+        <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn hidden lg:flex bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-brand-600/25 transition active:scale-95 items-center gap-2">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agendar</span>
         </a>
-        <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer" class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100">
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer" class="lg:hidden w-11 h-11 -mr-1.5 rounded-xl text-slate-700 hover:bg-slate-100 flex items-center justify-center">
           <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
@@ -50,29 +50,43 @@
   <!-- Menu do celular -->
   <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-900/60 z-50 hidden"></div>
   <!-- Fechado = fora da tela E invisível: sem isso a sombra vaza na borda direita e o Tab entra nos links escondidos. -->
-  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-full h-full bg-white z-50 shadow-2xl translate-x-full invisible transition-[transform,visibility] duration-300 ease-in-out flex flex-col justify-between p-6 overflow-y-auto" aria-label="Menu" aria-hidden="true">
-    <div>
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <!-- include:logo -->
-        <button id="close-mobile-menu" type="button" aria-label="Fechar menu" class="p-2 rounded-lg text-slate-400 hover:text-slate-700">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <nav class="flex flex-col gap-1 py-4 text-base font-semibold text-slate-700" aria-label="Menu do celular">
-        <a href="/" data-nav="inicio" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Início</a>
-        <a href="/medicina" data-nav="medicina" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Especialidades e terapias</a>
-        <a href="/odontologia" data-nav="odontologia" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Odontologia</a>
-        <a href="/exames" data-nav="exames" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Exames</a>
-        <a href="/corpo-clinico" data-nav="corpo-clinico" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Equipe</a>
-        <a href="/contato" data-nav="contato" class="py-2.5 px-3 rounded-lg hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">Como chegar e contato</a>
-      </nav>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-[88vw] h-full bg-white z-50 shadow-2xl translate-x-full invisible transition-[transform,visibility] duration-300 ease-in-out flex flex-col overflow-y-auto overscroll-contain" aria-label="Menu" aria-hidden="true">
+    <div class="flex items-center justify-between h-16 px-5 border-b border-slate-100 shrink-0">
+      <!-- include:logo -->
+      <button id="close-mobile-menu" type="button" aria-label="Fechar menu" class="w-11 h-11 -mr-2 rounded-xl text-slate-500 hover:text-slate-800 hover:bg-slate-100 flex items-center justify-center">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
     </div>
-    <div class="pt-4 border-t border-slate-100 space-y-2">
-      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn w-full bg-brand-600 text-white font-bold py-3 rounded-xl shadow-md flex items-center justify-center gap-2">
-        <i data-lucide="calendar" class="w-4 h-4"></i> Agendar agora
+
+    <nav class="flex-1 px-3 py-3 text-base font-semibold text-slate-800" aria-label="Menu do celular">
+      <a href="/" data-nav="inicio" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="house" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Início</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
       </a>
-      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="w-full bg-emerald-50 text-emerald-800 font-bold py-2.5 rounded-xl flex items-center justify-center gap-2">
-        <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp {{site.whatsappDisplay}}
+      <a href="/medicina" data-nav="medicina" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="stethoscope" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Especialidades e terapias</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+      </a>
+      <a href="/odontologia" data-nav="odontologia" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="smile" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Odontologia</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+      </a>
+      <a href="/exames" data-nav="exames" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="microscope" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Exames</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+      </a>
+      <a href="/corpo-clinico" data-nav="corpo-clinico" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="users" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Equipe</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+      </a>
+      <a href="/contato" data-nav="contato" class="flex items-center gap-3 min-h-12 px-3 rounded-xl hover:bg-slate-50 aria-[current=page]:bg-brand-50 aria-[current=page]:text-brand-700">
+        <i data-lucide="map-pin" class="w-5 h-5 text-brand-600"></i><span class="flex-1">Como chegar e contato</span><i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+      </a>
+    </nav>
+
+    <div class="px-5 pt-4 pb-[calc(1.25rem_+_env(safe-area-inset-bottom))] border-t border-slate-100 space-y-3 text-sm text-slate-600">
+      <p class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-brand-600 shrink-0"></i> {{site.hoursShort}}</p>
+      <p class="flex items-start gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i> {{site.street}} - {{site.neighborhood}}, {{site.city}}-{{site.state}}</p>
+      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="open-booking-modal-btn w-full min-h-12 bg-brand-600 text-white font-bold rounded-xl shadow-md flex items-center justify-center gap-2">
+        <i data-lucide="calendar" class="w-5 h-5"></i> Agendar agora
+      </a>
+      <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" class="w-full min-h-12 bg-emerald-50 text-emerald-800 font-bold rounded-xl flex items-center justify-center gap-2">
+        <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp {{site.whatsappDisplay}}
       </a>
     </div>
   </aside>

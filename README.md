@@ -37,7 +37,7 @@ npm test
 | :--- | :--- |
 | `site.config.json` | **Dados da clínica** (endereço, WhatsApp, horário, Instagram). Mude aqui e todas as páginas atualizam. |
 | `src/pages/` | Conteúdo de cada página. A primeira linha tem título e descrição para o Google. |
-| `src/partials/` | Partes repetidas: cabeçalho, rodapé, logo, modal de agendamento, chamada final. |
+| `src/partials/` | Partes repetidas: cabeçalho, rodapé, logo, modal de agendamento, chamada final e `mobile-nav.html` (barra fixa do celular). |
 | `src/js/main.js` | Menu do celular, modal e mensagem do WhatsApp. Sem bibliotecas. |
 | `src/css/input.css` | Fontes e estilos extras. O resto é Tailwind (`tailwind.config.js`, com as cores da logo). |
 | `src/icons/` | Ícones SVG (Lucide, licença ISC). Para usar um novo, copie o `.svg` para cá e use `<i data-lucide="nome" class="w-5 h-5"></i>`. |
@@ -73,6 +73,14 @@ O Cloudflare entrega tudo por CDN, com HTTPS e compressão Brotli. O `_headers` 
 - cabeçalhos de segurança: CSP, nosniff, Referrer-Policy e Permissions-Policy.
 
 > Se adicionar um serviço externo (Google Analytics, Meta Pixel, fotos de outro domínio), inclua o domínio no `Content-Security-Policy` do `src/static/_headers`, senão o navegador bloqueia.
+
+## Navegação no celular
+
+- **Barra fixa embaixo** (`src/partials/mobile-nav.html`, só abaixo de 1024 px): Início, Especialidades, Agendar em destaque, WhatsApp e Contato. No celular ela substitui o botão flutuante do WhatsApp e a faixa azul de horário, que vai para o menu.
+- **Menu lateral** com ícones; horário, endereço, Agendar e WhatsApp ficam no fim dele.
+- **Formulário de agendamento** abre como uma folha que sobe de baixo. Os campos têm 16 px no celular, porque abaixo disso o iPhone dá zoom sozinho ao tocar no campo.
+- **Especialidades:** cada card tem uma âncora (ex.: `/medicina#cardiologia`). A página inicial e os atalhos do topo de `/medicina` levam direto ao card. O teste `tests/links.test.mjs` falha se uma âncora usada em algum link deixar de existir.
+- **Regra:** tudo que se toca precisa ter pelo menos 44x44 px.
 
 ## Logo e ícones
 
