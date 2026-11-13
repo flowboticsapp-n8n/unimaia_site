@@ -11,12 +11,20 @@
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook) -->
+  <!-- Prévia ao compartilhar o link (WhatsApp, Instagram, Facebook). A imagem PRECISA de URL absoluta
+       (https://...): com caminho relativo o WhatsApp não mostra a prévia. Arte gerada por scripts/og_image.py. -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="{{site.legalName}}">
   <meta property="og:title" content="{{page.title}}">
   <meta property="og:description" content="{{page.description}}">
+  <meta property="og:url" content="{{page.url}}">
+  <meta property="og:image" content="{{site.siteUrl}}/assets/img/og-unimaia-v1.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{site.legalName}}: especialistas em um só lugar, em {{site.city}}-{{site.state}}">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Fontes hospedadas no próprio site: o navegador começa a baixar antes de ler o CSS -->
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>

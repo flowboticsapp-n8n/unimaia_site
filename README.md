@@ -187,6 +187,18 @@ Ao colocar fotos reais (equipe, fachada, recepção):
 - use `<img src="/img/arquivo.webp" alt="descrição" width="400" height="400" loading="lazy" decoding="async">`;
 - não use `loading="lazy"` na imagem principal do topo da página.
 
+## Prévia no WhatsApp (imagem de compartilhamento)
+
+Toda página tem as tags `og:*` em `src/partials/layout.html`. A imagem é `src/static/assets/img/og-unimaia-v1.jpg` (1200x630, cerca de 70 KB): foto do topo com véu azul, logo e frase. Ela é gerada por script, com as mesmas fontes do site:
+
+```bash
+python3 scripts/og_image.py
+```
+
+- **A URL da imagem precisa ser absoluta** (`https://unimaia.com.br/...`): com caminho relativo, o WhatsApp não mostra a prévia. O domínio vem de `siteUrl` no `site.config.json`. O `tests/links.test.mjs` confere a URL de cada página e se a imagem existe no build.
+- **Cache:** WhatsApp e Facebook guardam a prévia de um link por um tempo. Para testar depois de publicar, mande o link com algo no fim (ex.: `https://unimaia.com.br/?v=2`) ou atualize no [Depurador de Compartilhamento do Facebook](https://developers.facebook.com/tools/debug/). Se mudar a arte, suba a versão (`v1` → `v2`) no script e no `layout.html`.
+- Ao trocar a foto de esboço pela foto real, rode também este script.
+
 ## Checklist para ir para produção (domínio próprio)
 
 > **Hoje o Google está BLOQUEADO de indexar o site** (`"indexable": false` no `site.config.json`).
@@ -195,9 +207,10 @@ Ao colocar fotos reais (equipe, fachada, recepção):
 
 Quando o domínio da clínica estiver pronto, faça nesta ordem:
 
-- [ ] Apontar o DNS do domínio para a VPS, configurar o domínio com HTTPS no proxy e conferir o site nele.
-- [ ] **Liberar a indexação:** trocar para `"indexable": true` no `site.config.json`.
-- [ ] Adicionar canonical apontando para o domínio, sitemap.xml e imagem de compartilhamento (og:image).
+- [x] Domínio próprio no ar: https://unimaia.com.br (`siteUrl` no `site.config.json`).
+- [x] Imagem de compartilhamento (og:image) e og:url com o domínio.
+- [ ] **Liberar a indexação:** trocar para `"indexable": true` no `site.config.json`. Antes, preencher o responsável técnico (rodapé) e os dados da Política de Privacidade.
+- [ ] Adicionar canonical apontando para o domínio e sitemap.xml.
 - [ ] Apagar o projeto antigo no Cloudflare (Workers & Pages → unimaia-site), para não sobrar uma cópia do site no ar.
 - [ ] Cadastrar o domínio no Google Search Console e enviar o sitemap.
 - [x] Desligar o GitHub Pages do repositório (Settings → Pages).
@@ -221,11 +234,12 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 
 - [ ] Endereço: o Facebook diz **nº 75**; o cadastro do CNPJ diz **nº 157**.
 - [ ] WhatsApp: o Facebook diz **(87) 99995-2824**; diretórios citam **(87) 99941-7850**.
-- [ ] Horário (seg. a sex., 9h às 18h): veio de um único diretório. **As listas de 11/maio indicam que está incompleto:** há profissionais atendendo aos sábados (8h às 12h), a coleta de sangue é das 7h às 9h e há dentista das 8h às 18h. Confirmar o horário da recepção e trocar `hoursShort`, `hoursLong` e `openingHours`.
+- [x] Horário confirmado: seg. a sex., 7h às 19h; sáb., 7h às 13h; domingo fechado.
 - [ ] Nome e CRM do responsável técnico, obrigatório na publicidade médica (rodapé).
 - [ ] Formas de pagamento (Pix, cartão, parcelamento), se a clínica quiser mostrar no site. A clínica **não aceita convênios**.
 - [x] Tratamentos odontológicos e tipos de ultrassom (listas de 11/maio).
-- [ ] Ótica Maia: endereço (é no mesmo prédio?) e WhatsApp próprio, se houver. Hoje o botão "Falar sobre óculos" usa o WhatsApp da clínica.
+- [x] Ótica Maia: endereço (Rua José Pereira de Carvalho, 192) e Instagram (@oticamaia10).
+- [ ] Ótica Maia: WhatsApp próprio, quando houver. Hoje o botão da ótica abre o Instagram.
 - [ ] Aprovar com a clínica a seção da Ótica Maia (ver "Ótica Maia" acima) e pedir a logo vetorial da ótica, se existir.
 - [ ] Prótese dentária: a lista indica um **técnico em prótese dentária** atendendo pacientes. Pela Lei 6.710/1979, o técnico não pode atender o paciente diretamente; o atendimento precisa ser de um dentista (CRO). Confirmar antes de divulgar.
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).

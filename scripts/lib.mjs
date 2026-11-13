@@ -27,6 +27,28 @@ export function parsePage(source, fileName = 'página') {
   return { meta, body: source.slice(match[0].length) };
 }
 
+const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const HH_MM = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+/** Horários: lista de { days: ["Monday", ...], opens: "07:00", closes: "19:00" } (vira o JSON-LD do Google). */
+function validateOpeningHours(list) {
+  const ok =
+    Array.isArray(list) &&
+    list.length > 0 &&
+    list.every(
+      (h) =>
+        Array.isArray(h.days) &&
+        h.days.length > 0 &&
+        h.days.every((d) => WEEK_DAYS.includes(d)) &&
+        HH_MM.test(h.opens) &&
+        HH_MM.test(h.closes) &&
+        h.opens < h.closes,
+    );
+  if (!ok) {
+    throw new Error('site.config.json: "openingHours" deve ser uma lista de { days: ["Monday", ...], opens: "07:00", closes: "19:00" }');
+  }
+}
+
 /** Valida e completa os dados da clínica (site.config.json). */
 export function buildSiteData(config) {
   if (!/^\d{12,13}$/.test(config.whatsapp || '')) {
@@ -41,8 +63,17 @@ export function buildSiteData(config) {
   if (typeof config.indexable !== 'boolean') {
     throw new Error('site.config.json: "indexable" deve ser true ou false (false bloqueia o Google)');
   }
+  // Endereço público do site, sem barra no fim. A prévia do WhatsApp só aceita imagem com URL absoluta.
+  if (!/^https:\/\/[a-z0-9.-]+\.[a-z]{2,}$/.test(config.siteUrl || '')) {
+    throw new Error('site.config.json: "siteUrl" deve ser o endereço https do site, sem barra no fim (ex.: https://unimaia.com.br)');
+  }
+  if (!/^[A-Za-z0-9._]{1,30}$/.test(config.opticsInstagram || '')) {
+    throw new Error('site.config.json: "opticsInstagram" deve ser só o @ da ótica, sem a arroba');
+  }
+  validateOpeningHours(config.openingHours);
   const fullAddress = `${config.street} - ${config.neighborhood}, ${config.city} - ${config.state}, ${config.cep}`;
   const mapsQuery = encodeURIComponent(fullAddress);
+  const opticsQuery = encodeURIComponent(`${config.opticsStreet} - ${config.opticsNeighborhood}, ${config.city} - ${config.state}`);
   return {
     ...config,
     fullAddress,
@@ -50,8 +81,15 @@ export function buildSiteData(config) {
     instagramUrl: `https://www.instagram.com/${config.instagram}/`,
     mapsEmbed: `https://www.google.com/maps?q=${mapsQuery}&output=embed`,
     mapsLink: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
+    opticsInstagramUrl: `https://www.instagram.com/${config.opticsInstagram}/`,
+    opticsMapsLink: `https://www.google.com/maps/search/?api=1&query=${opticsQuery}`,
     year: String(new Date().getFullYear()),
   };
+}
+
+/** URL absoluta da página (og:url). A inicial é a raiz; as outras ficam sem .html, como no nginx. */
+export function pageUrl(site, name) {
+  return name === 'index' ? `${site.siteUrl}/` : `${site.siteUrl}/${name}`;
 }
 
 /**
@@ -135,6 +173,7 @@ export function clinicJsonLd(site) {
     name: site.legalName,
     alternateName: site.name,
     description: site.tagline,
+    url: `${site.siteUrl}/`,
     telephone: `+${site.whatsapp}`,
     address: {
       '@type': 'PostalAddress',
@@ -144,14 +183,12 @@ export function clinicJsonLd(site) {
       postalCode: site.cep,
       addressCountry: 'BR',
     },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: site.openingHours.days,
-        opens: site.openingHours.opens,
-        closes: site.openingHours.closes,
-      },
-    ],
+    openingHoursSpecification: site.openingHours.map((h) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: h.days,
+      opens: h.opens,
+      closes: h.closes,
+    })),
     sameAs: [site.instagramUrl],
   };
 }
