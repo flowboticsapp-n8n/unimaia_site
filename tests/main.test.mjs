@@ -13,9 +13,14 @@ const {
   buildWhatsAppUrl,
 } = require('../src/js/main.js');
 
-test('lista de serviços bate com a arte da clínica (22 itens)', () => {
-  const total = SERVICES.medical.length + SERVICES.exams.length + 1; // odontologia conta como 1
-  assert.equal(total, 22);
+// A conferência com os cards das páginas fica em tests/content.test.mjs.
+test('lista de serviços do formulário: três áreas, sem itens vazios ou repetidos', () => {
+  assert.deepEqual(Object.keys(SERVICES), ['medical', 'dental', 'exams']);
+  for (const [area, items] of Object.entries(SERVICES)) {
+    assert.ok(items.length > 0, `${area} vazio`);
+    assert.equal(new Set(items).size, items.length, `${area} com item repetido`);
+    assert.ok(items.every((i) => typeof i === 'string' && i.trim() === i && i.length > 0), `${area} com item inválido`);
+  }
 });
 
 test('formatPhone aplica a máscara brasileira', () => {
