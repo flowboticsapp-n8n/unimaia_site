@@ -62,3 +62,13 @@ test('toda página tem og:image e og:url absolutos, e a imagem existe no build',
   }
   assert.deepEqual(problems, []);
 });
+
+// Páginas com "draft": true no cabeçalho não podem ir para o site (nem ser linkadas: o teste acima pega).
+test('páginas em rascunho não são publicadas', { skip: !existsSync(dist) && 'rode npm run build antes' }, () => {
+  const published = [];
+  for (const file of readdirSync('src/pages').filter((f) => f.endsWith('.html'))) {
+    const header = readFileSync(path.join('src/pages', file), 'utf8').match(/<!--\s*page:\s*(\{[\s\S]*?\})\s*-->/)[1];
+    if (JSON.parse(header).draft === true && existsSync(path.join(dist, file))) published.push(file);
+  }
+  assert.deepEqual(published, []);
+});

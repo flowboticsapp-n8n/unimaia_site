@@ -128,6 +128,18 @@ O `docker-compose.yml` sobe o container com sistema de arquivos só leitura (`re
 - **Especialidades:** cada card tem uma âncora (ex.: `/medicina#cardiologia`). A página inicial e os atalhos do topo de `/medicina` levam direto ao card. O teste `tests/links.test.mjs` falha se uma âncora usada em algum link deixar de existir.
 - **Regra:** tudo que se toca precisa ter pelo menos 44x44 px.
 
+## Páginas em rascunho
+
+Uma página com `"draft": true` no cabeçalho (`<!-- page: {...} -->`) passa pelas checagens do build, mas **não é publicada**: o endereço dá 404. O log do build lista os rascunhos.
+
+Hoje está em rascunho a página **Equipe** (`src/pages/corpo-clinico.html`), até a clínica enviar os profissionais. Para reativar:
+
+1. Tirar `"draft": true` do cabeçalho da página.
+2. Voltar o link "Equipe" no `src/partials/header.html` (menu do desktop e menu do celular) e no `src/partials/footer.html`.
+3. Em `scripts/smoke-test.sh`, voltar `/corpo-clinico` para a lista de páginas com 200 e tirar a checagem de 404.
+
+O `tests/links.test.mjs` falha se algum link apontar para uma página em rascunho, ou se ela aparecer no build.
+
 ## Serviços e agendamento
 
 Fonte: listas de médicos e dentistas enviadas pela clínica (atualizadas em 11 de maio). O site usa **só as especialidades e os serviços**: sem nome de profissional, preço ou horário. O agendamento é por especialidade; a recepção escolhe o profissional.
@@ -242,7 +254,7 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 - [ ] Ótica Maia: WhatsApp próprio, quando houver. Hoje o botão da ótica abre o Instagram.
 - [ ] Aprovar com a clínica a seção da Ótica Maia (ver "Ótica Maia" acima) e pedir a logo vetorial da ótica, se existir.
 - [ ] Prótese dentária: a lista indica um **técnico em prótese dentária** atendendo pacientes. Pela Lei 6.710/1979, o técnico não pode atender o paciente diretamente; o atendimento precisa ser de um dentista (CRO). Confirmar antes de divulgar.
-- [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
+- [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`). A página está **em rascunho** até lá (ver "Páginas em rascunho").
 - [x] Logo oficial aplicada (variações em `src/static/assets/brand/`).
 - [ ] Trocar a foto de esboço do topo da página inicial (Unsplash) por uma foto real da recepção ou da fachada da Unimaia.
 - [ ] Pedir à clínica o arquivo vetorial da logo (SVG, AI ou PDF), se existir, para gerar as variações com nitidez máxima.
