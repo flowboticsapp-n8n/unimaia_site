@@ -210,36 +210,51 @@
           </picture>
           <h2 id="otica-titulo" class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">Da consulta aos óculos novos, sem sair do grupo Unimaia</h2>
           <p class="text-neutral-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">A {{site.opticsName}} é a ótica do grupo Unimaia. Depois da consulta de oftalmologia, escolha sua armação e suas lentes de grau com o mesmo cuidado que você recebe na clínica.</p>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-1">
-            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Oftalmologia" class="open-booking-modal-btn inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold px-6 py-3.5 rounded-xl transition">
+          <div class="pt-1">
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Oftalmologia" class="open-booking-modal-btn inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold px-6 py-3.5 rounded-xl transition">
               <i data-lucide="calendar" class="w-5 h-5"></i> Agendar oftalmologia
             </a>
-            <!-- A ótica ainda não tem WhatsApp: o contato é pelo Instagram (site.config.json > opticsInstagram). -->
-            <a href="{{site.opticsInstagramUrl}}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-amber-400/60 text-amber-300 hover:bg-amber-400/10 font-bold px-6 py-3.5 rounded-xl transition">
-              <i data-lucide="instagram" class="w-5 h-5"></i> @{{site.opticsInstagram}}
-            </a>
           </div>
-          <address class="not-italic flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-x-3 gap-y-1 text-sm text-neutral-300">
-            <span><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1 -mt-0.5 align-middle text-amber-300"></i>{{site.opticsStreet}}, {{site.opticsNeighborhood}}, {{site.city}}-{{site.state}}</span>
-            <a href="{{site.opticsMapsLink}}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 py-2 font-semibold text-amber-300 hover:text-amber-200 underline underline-offset-4">Como chegar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-          </address>
           <p class="text-xs text-neutral-400">A receita é sua: você escolhe onde fazer os seus óculos.</p>
         </div>
 
-        <ol class="lg:col-span-5 space-y-3">
-          <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
-            <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="eye" class="w-5 h-5"></i></span>
-            <span><span class="block font-bold text-white">1. Consulta de oftalmologia</span><span class="block text-sm text-neutral-400 mt-0.5">Avaliação da visão e da saúde dos olhos na Unimaia.</span></span>
-          </li>
-          <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
-            <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-5 h-5"></i></span>
-            <span><span class="block font-bold text-white">2. Receita na mão</span><span class="block text-sm text-neutral-400 mt-0.5">Se precisar de óculos, você sai da consulta com a receita.</span></span>
-          </li>
-          <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
-            <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="glasses" class="w-5 h-5"></i></span>
-            <span><span class="block font-bold text-white">3. Armação e lentes</span><span class="block text-sm text-neutral-400 mt-0.5">Na {{site.opticsName}}, você escolhe a armação e as lentes de grau.</span></span>
-          </li>
-        </ol>
+        <div class="lg:col-span-5 space-y-3">
+          <ol class="space-y-3">
+            <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
+              <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="eye" class="w-5 h-5"></i></span>
+              <span><span class="block font-bold text-white">1. Consulta de oftalmologia</span><span class="block text-sm text-neutral-400 mt-0.5">Avaliação da visão e da saúde dos olhos na Unimaia.</span></span>
+            </li>
+            <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
+              <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-5 h-5"></i></span>
+              <span><span class="block font-bold text-white">2. Receita na mão</span><span class="block text-sm text-neutral-400 mt-0.5">Se precisar de óculos, você sai da consulta com a receita.</span></span>
+            </li>
+            <li class="flex gap-4 items-start bg-white/5 border border-white/10 rounded-2xl p-5">
+              <span class="w-11 h-11 rounded-xl bg-amber-400/15 text-amber-300 flex items-center justify-center shrink-0"><i data-lucide="glasses" class="w-5 h-5"></i></span>
+              <span><span class="block font-bold text-white">3. Armação e lentes</span><span class="block text-sm text-neutral-400 mt-0.5">Na {{site.opticsName}}, você escolhe a armação e as lentes de grau.</span></span>
+            </li>
+          </ol>
+
+          <!-- Onde fica e contato da ótica. Ainda sem WhatsApp próprio: o contato é pelo Instagram
+               (site.config.json > opticsInstagram). Botões do mesmo tamanho, lado a lado (um embaixo do outro no celular). -->
+          <div class="rounded-2xl border border-amber-400/30 bg-gradient-to-br from-amber-400/[0.12] to-white/[0.03] p-5">
+            <div class="flex gap-4 items-start">
+              <span class="w-11 h-11 rounded-xl bg-amber-400 text-neutral-950 flex items-center justify-center shrink-0"><i data-lucide="map-pin" class="w-5 h-5"></i></span>
+              <address class="not-italic">
+                <span class="block font-bold text-white">Onde fica a {{site.opticsName}}</span>
+                <span class="block text-sm text-neutral-300 mt-0.5">{{site.opticsStreet}}</span>
+                <span class="block text-sm text-neutral-400">{{site.opticsNeighborhood}}, {{site.city}}-{{site.state}}</span>
+              </address>
+            </div>
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <a href="{{site.opticsMapsLink}}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-amber-50 text-neutral-950 font-bold text-sm px-4 py-3 transition">
+                <i data-lucide="navigation" class="w-4 h-4"></i> Como chegar
+              </a>
+              <a href="{{site.opticsInstagramUrl}}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 hover:bg-white/10 text-white font-bold text-sm px-4 py-3 transition">
+                <i data-lucide="instagram" class="w-4 h-4 text-amber-300"></i> @{{site.opticsInstagram}}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
