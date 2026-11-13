@@ -82,9 +82,9 @@ Quando você aplicar um conceito importante de segurança, banco ou arquitetura,
 ---
 
 ## Específico deste projeto (preencher em cada projeto)
-- **Stack:** site estático. HTML + Tailwind 3.4 (compilado no build) + JS puro. Build em Node (`scripts/build.mjs`), deploy no Cloudflare Workers com Static Assets (`wrangler.jsonc`, saída `dist/`).
-- **Como rodar / testar:** `npm install`, `npm run build`, `npm run preview` (http://127.0.0.1:4173), `npm test`. `npm run check` faz build e testes.
-- **Estrutura de pastas relevante:** `site.config.json` (dados da clínica), `src/pages/` (conteúdo), `src/partials/` (cabeçalho, rodapé, modal), `src/js/main.js`, `src/icons/` (SVG Lucide), `src/static/_headers` (cache e CSP).
+- **Stack:** site estático. HTML + Tailwind 3.4 (compilado no build) + JS puro. Build em Node (`scripts/build.mjs`), deploy em VPS própria: `Dockerfile` na raiz (build Node + imagem final `nginx-unprivileged`), atrás do proxy com HTTPS da VPS. Config do nginx em `deploy/nginx/`.
+- **Como rodar / testar:** `npm install`, `npm run build`, `npm run preview` (http://127.0.0.1:4173), `npm test`. `npm run check` faz build e testes. Container: `docker compose up -d --build` e `bash scripts/smoke-test.sh http://127.0.0.1:8080`.
+- **Estrutura de pastas relevante:** `site.config.json` (dados da clínica), `src/pages/` (conteúdo), `src/partials/` (cabeçalho, rodapé, modal), `src/js/main.js`, `src/icons/` (SVG Lucide), `deploy/nginx/` (rotas, cache, CSP e cabeçalhos; todo `location` com `add_header` inclui `security-headers.conf`).
 - **Logo:** oficial em `brand/unimaia-logo-original.webp`; variações (AVIF/WebP/PNG) geradas por `scripts/brand_assets.py` e usadas via `<picture>` em `src/partials/logo.html` e `logo-dark.html`. Não editar as imagens geradas à mão.
 - **Fotos:** originais em `media/`; versões AVIF/WebP/JPEG geradas por `scripts/optimize_images.py` em `src/static/assets/img/` (nome com versão, ex.: `-v1-`). A foto do topo é esboço do Unsplash, a trocar por foto real.
 - **Celular:** barra fixa embaixo (`mobile-nav.html`) com as ações principais; alvos de toque com pelo menos 44 px; campos de formulário com 16 px no celular (`text-base sm:text-sm`); especialidades linkam para âncoras dos cards (`/medicina#slug`).
