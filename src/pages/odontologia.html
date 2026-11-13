@@ -1,6 +1,6 @@
 <!-- page: {
   "title": "Odontologia | Unimaia Lajedo-PE",
-  "description": "Dentista em Lajedo-PE: avaliação odontológica, prevenção e plano de tratamento na Unimaia, no mesmo lugar da sua consulta médica. Agende pelo WhatsApp.",
+  "description": "Dentista em Lajedo-PE: limpeza, restauração, clareamento, siso, implante, aparelho, canal, odontopediatria e prótese na Unimaia. Agende pelo WhatsApp.",
   "nav": "odontologia"
 } -->
 
@@ -8,37 +8,104 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
         <p class="text-xs font-bold uppercase tracking-widest text-brand-700">Saúde bucal</p>
         <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900">Odontologia</h1>
-        <p class="text-slate-600 max-w-2xl mx-auto">Cuide do seu sorriso no mesmo lugar onde você faz suas consultas médicas e exames.</p>
+        <p class="text-slate-600 max-w-2xl mx-auto">Do clínico geral ao implante, aparelho e canal, no mesmo lugar onde você faz suas consultas médicas e exames.</p>
       </div>
     </section>
 
-    <!-- TODO confirmar com a clínica: lista de tratamentos odontológicos oferecidos, para detalhar esta página. -->
+    <!-- Atalhos: no celular, uma linha que rola para o lado (como em apps); no desktop, quebra em várias linhas. -->
+    <nav aria-label="Ir direto para o tratamento" class="bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex gap-2 overflow-x-auto lg:flex-wrap lg:justify-center snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+            <a href="#clinico-geral" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Clínico geral</a>
+            <a href="#clareamento" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Clareamento dental</a>
+            <a href="#siso" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Siso e cirurgias</a>
+            <a href="#implante" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Implante dentário</a>
+            <a href="#ortodontia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Ortodontia (aparelho)</a>
+            <a href="#canal" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Tratamento de canal</a>
+            <a href="#odontopediatria" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Odontopediatria</a>
+            <a href="#protese" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Prótese dentária</a>
+        </div>
+      </div>
+    </nav>
+
     <section class="py-16 bg-slate-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article class="bg-white rounded-2xl p-6 border border-slate-200">
-            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="clipboard-list" class="w-6 h-6"></i></span>
-            <h2 class="text-lg font-bold text-slate-900 mt-4">1. Avaliação</h2>
-            <p class="text-sm text-slate-600 mt-2 leading-relaxed">O dentista examina dentes e gengivas, conversa sobre suas queixas e identifica o que precisa ser cuidado.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article id="clinico-geral" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="toothbrush" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Clínico geral</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Limpeza, restauração e extração, com avaliação completa de dentes e gengivas.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Clínico geral" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar clínico geral</a>
           </article>
-          <article class="bg-white rounded-2xl p-6 border border-slate-200">
-            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="file-text" class="w-6 h-6"></i></span>
-            <h2 class="text-lg font-bold text-slate-900 mt-4">2. Plano de tratamento</h2>
-            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Você recebe a explicação das opções indicadas para o seu caso, com etapas e valores, antes de começar.</p>
+          <article id="clareamento" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="sparkles" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Clareamento dental</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Dentes mais brancos com clareamento indicado e acompanhado pelo dentista.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Clareamento dental" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar clareamento dental</a>
           </article>
-          <article class="bg-white rounded-2xl p-6 border border-slate-200">
+          <article id="siso" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="syringe" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Siso e cirurgias</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Extração de dente siso e pequenas cirurgias na boca, após avaliação.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Siso e cirurgias" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar avaliação de siso</a>
+          </article>
+          <article id="implante" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="smile-plus" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Implante dentário</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Reposição de dentes perdidos com implante, planejada a partir da avaliação.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Implante dentário" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar implante dentário</a>
+          </article>
+          <article id="ortodontia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
             <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="smile" class="w-6 h-6"></i></span>
-            <h2 class="text-lg font-bold text-slate-900 mt-4">3. Acompanhamento</h2>
-            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Retornos e prevenção para manter a saúde bucal em dia, para adultos e crianças.</p>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Ortodontia (aparelho)</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Aparelho convencional e autoligado, com manutenção periódica.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Ortodontia (aparelho)" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar ortodontia</a>
           </article>
+          <article id="canal" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="drill" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Tratamento de canal</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Endodontia: trata a parte interna do dente inflamada ou infectada para salvar o dente.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Tratamento de canal" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar tratamento de canal</a>
+          </article>
+          <article id="odontopediatria" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="baby" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Odontopediatria</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Dentista especialista em crianças, com atendimento acolhedor desde os primeiros dentes.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Odontopediatria" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar odontopediatria</a>
+          </article>
+          <article id="protese" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="crown" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Prótese dentária</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Próteses para repor dentes perdidos e devolver a mastigação e o sorriso.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Prótese dentária" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar prótese dentária</a>
+          </article>
+        </div>
+
+        <h2 class="text-2xl font-extrabold text-brand-900 text-center mt-16">Como funciona</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="clipboard-list" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">1. Avaliação</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">O dentista examina dentes e gengivas, conversa sobre suas queixas e identifica o que precisa ser cuidado.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="file-text" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">2. Plano de tratamento</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Você recebe a explicação das opções indicadas para o seu caso, com etapas e valores, antes de começar.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 border border-slate-200">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="calendar-check" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">3. Acompanhamento</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed">Retornos e prevenção para manter a saúde bucal em dia, para adultos e crianças.</p>
+          </div>
         </div>
 
         <div class="mt-10 bg-brand-900 text-white rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 class="text-xl sm:text-2xl font-extrabold">Procura um tratamento específico?</h2>
-            <p class="text-slate-300 mt-1">Pergunte pelo WhatsApp se ele é feito na Unimaia e agende sua avaliação.</p>
+            <h2 class="text-xl sm:text-2xl font-extrabold">Não sabe qual tratamento precisa?</h2>
+            <p class="text-slate-300 mt-1">Comece pela avaliação: o dentista indica o caminho para o seu caso.</p>
           </div>
-          <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" class="open-booking-modal-btn shrink-0 bg-white text-brand-900 hover:bg-brand-50 font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
+          <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="dental" data-service="Clínico geral" class="open-booking-modal-btn shrink-0 bg-white text-brand-900 hover:bg-brand-50 font-bold px-6 py-3.5 rounded-xl transition flex items-center gap-2">
             <i data-lucide="calendar" class="w-5 h-5"></i> Agendar avaliação
           </a>
         </div>

@@ -128,6 +128,26 @@ O `docker-compose.yml` sobe o container com sistema de arquivos só leitura (`re
 - **Especialidades:** cada card tem uma âncora (ex.: `/medicina#cardiologia`). A página inicial e os atalhos do topo de `/medicina` levam direto ao card. O teste `tests/links.test.mjs` falha se uma âncora usada em algum link deixar de existir.
 - **Regra:** tudo que se toca precisa ter pelo menos 44x44 px.
 
+## Serviços e agendamento
+
+Fonte: listas de médicos e dentistas enviadas pela clínica (atualizadas em 11 de maio). O site usa **só as especialidades e os serviços**: sem nome de profissional, preço ou horário. O agendamento é por especialidade; a recepção escolhe o profissional.
+
+Cada serviço aparece em três lugares, que precisam bater:
+
+1. o card com âncora na página da área (`medicina`, `odontologia`, `exames`);
+2. a lista `SERVICES` em `src/js/main.js` (opções do formulário de agendamento);
+3. a lista "Tudo o que oferecemos" da página inicial (`#servicos`), com o total no título.
+
+O `tests/content.test.mjs` falha se um card não tiver opção no formulário (ou o contrário), se um botão "Agendar" apontar para um serviço que não existe, ou se o número de especialidades e de serviços citado no texto não bater com os cards. Ao incluir ou tirar um serviço, mexa nos três lugares e nos números do texto.
+
+Ficaram de fora de propósito: **Neuropsiquiatria**, porque não é especialidade reconhecida pelo CFM (já está coberta por Neurologia e Psiquiatria), e **Medicina do Trabalho**, que aparece como "Exames ocupacionais" até a clínica confirmar o título (RQE) da médica. Hepatologia e Quiropraxia saíram porque não estão nas listas atualizadas.
+
+## Ótica Maia
+
+A ótica do grupo Unimaia aparece na seção `#otica` da página inicial e no card de Oftalmologia. O nome fica em `opticsName` no `site.config.json`.
+
+**Regra:** a seção **não** oferece exame de vista grátis ou com desconto na compra dos óculos e **não** cita o nome do oftalmologista. O Código de Ética Médica proíbe o médico de exercer a profissão "com interação ou dependência de [...] óptica" (art. 68) e de ganhar com a venda de produtos quando a compra vem da sua influência profissional (art. 69). Publicar a oferta no site vira prova num processo no CRM-PE. Um teste em `tests/content.test.mjs` barra "grátis", "desconto" e nome de médico nessa seção. Se a clínica quiser a oferta, ela precisa antes de um parecer do jurídico ou do CRM-PE.
+
 ## Logo e ícones
 
 A logo oficial fica em `brand/unimaia-logo-original.webp`. As variações são geradas uma vez e versionadas no Git:
@@ -145,6 +165,7 @@ O script precisa de Python com Pillow (com suporte a AVIF) e numpy. Ele não rod
 | `logo-vertical-v1-{320,640}` e `-dark` | Composição original, para usos maiores (redes sociais, materiais). |
 | `simbolo-v1-256` | Só o símbolo "M". |
 | `flowbotics-dark-v1-{24,48}` | Crédito "Desenvolvido por" no rodapé (logo da Flowbotics, com "Flow" em branco). |
+| `otica-maia-v1-{320,640}` | Logo da Ótica Maia (original em `brand/otica-maia-logo-original.jpg`), sem o fundo preto e com o degradê dourado. Feita para fundo escuro: em fundo branco o amarelo claro perde contraste. |
 
 Cada variação sai em **AVIF**, **WebP** e **PNG**. O `<picture>` do site entrega AVIF (cerca de 6 KB) para quem suporta e cai para WebP e PNG nos navegadores antigos. Também gera `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` e `icon-512.png` em `src/static/`.
 
@@ -200,11 +221,13 @@ Vieram de fontes públicas (Facebook, Instagram, cadastro do CNPJ e diretórios)
 
 - [ ] Endereço: o Facebook diz **nº 75**; o cadastro do CNPJ diz **nº 157**.
 - [ ] WhatsApp: o Facebook diz **(87) 99995-2824**; diretórios citam **(87) 99941-7850**.
-- [ ] Horário (seg. a sex., 9h às 18h): veio de um único diretório. Sábado?
+- [ ] Horário (seg. a sex., 9h às 18h): veio de um único diretório. **As listas de 11/maio indicam que está incompleto:** há profissionais atendendo aos sábados (8h às 12h), a coleta de sangue é das 7h às 9h e há dentista das 8h às 18h. Confirmar o horário da recepção e trocar `hoursShort`, `hoursLong` e `openingHours`.
 - [ ] Nome e CRM do responsável técnico, obrigatório na publicidade médica (rodapé).
 - [ ] Formas de pagamento (Pix, cartão, parcelamento), se a clínica quiser mostrar no site. A clínica **não aceita convênios**.
-- [ ] Tratamentos odontológicos oferecidos (`src/pages/odontologia.html`).
-- [ ] Tipos de ultrassom disponíveis (`src/pages/exames.html`).
+- [x] Tratamentos odontológicos e tipos de ultrassom (listas de 11/maio).
+- [ ] Ótica Maia: endereço (é no mesmo prédio?) e WhatsApp próprio, se houver. Hoje o botão "Falar sobre óculos" usa o WhatsApp da clínica.
+- [ ] Aprovar com a clínica a seção da Ótica Maia (ver "Ótica Maia" acima) e pedir a logo vetorial da ótica, se existir.
+- [ ] Prótese dentária: a lista indica um **técnico em prótese dentária** atendendo pacientes. Pela Lei 6.710/1979, o técnico não pode atender o paciente diretamente; o atendimento precisa ser de um dentista (CRO). Confirmar antes de divulgar.
 - [ ] Profissionais da equipe, com registro e foto real (`src/pages/corpo-clinico.html`).
 - [x] Logo oficial aplicada (variações em `src/static/assets/brand/`).
 - [ ] Trocar a foto de esboço do topo da página inicial (Unsplash) por uma foto real da recepção ou da fachada da Unimaia.

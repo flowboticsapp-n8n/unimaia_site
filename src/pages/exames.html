@@ -1,31 +1,99 @@
 <!-- page: {
-  "title": "Exames laboratoriais e ultrassom | Unimaia Lajedo-PE",
-  "description": "Exames laboratoriais e ultrassom na Unimaia, Centro de Lajedo-PE. Envie seu pedido médico pelo WhatsApp e agende.",
+  "title": "Exames, ultrassom, raio-X e vacinas | Unimaia Lajedo-PE",
+  "description": "Exames laboratoriais, ultrassom, raio-X, ecocardiograma, MAPA, Holter, espirometria, endoscopia, colonoscopia, exames ocupacionais e vacinação no Centro de Lajedo-PE.",
   "nav": "exames"
 } -->
 
     <section class="py-14 bg-gradient-to-b from-brand-50 to-white border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
         <p class="text-xs font-bold uppercase tracking-widest text-brand-700">Diagnóstico na própria clínica</p>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900">Exames</h1>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-900">Exames e vacinas</h1>
         <p class="text-slate-600 max-w-2xl mx-auto">Faça seus exames no mesmo lugar da consulta, sem precisar procurar outro endereço.</p>
       </div>
     </section>
 
+    <!-- Atalhos: no celular, uma linha que rola para o lado (como em apps); no desktop, quebra em várias linhas. -->
+    <nav aria-label="Ir direto para o exame" class="bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex gap-2 overflow-x-auto lg:flex-wrap lg:justify-center snap-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+            <a href="#laboratoriais" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Exames laboratoriais</a>
+            <a href="#ultrassom" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Ultrassom</a>
+            <a href="#raio-x" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Raio-X</a>
+            <a href="#ecocardiograma" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Ecocardiograma</a>
+            <a href="#mapa-holter" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">MAPA e Holter 24 horas</a>
+            <a href="#espirometria" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Espirometria</a>
+            <a href="#endoscopia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Endoscopia digestiva</a>
+            <a href="#colonoscopia" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Colonoscopia</a>
+            <a href="#ocupacionais" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Exames ocupacionais</a>
+            <a href="#vacinacao" class="shrink-0 px-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm font-semibold text-brand-900 hover:border-brand-500 hover:bg-brand-50 transition">Vacinação</a>
+        </div>
+      </div>
+    </nav>
+
     <section class="py-16 bg-slate-50">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <article id="laboratoriais" class="scroll-mt-32 target:ring-2 target:ring-brand-500 card-hover bg-white rounded-2xl p-7 border border-slate-200 flex flex-col">
-          <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="flask-conical" class="w-6 h-6"></i></span>
-          <h2 class="text-xl font-bold text-slate-900 mt-4">Exames laboratoriais</h2>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Coleta para exames de sangue, urina e outros exames de laboratório pedidos pelo seu médico.</p>
-          <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Exames laboratoriais" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar exames laboratoriais</a>
-        </article>
-        <article id="ultrassom" class="scroll-mt-32 target:ring-2 target:ring-brand-500 card-hover bg-white rounded-2xl p-7 border border-slate-200 flex flex-col">
-          <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan-line" class="w-6 h-6"></i></span>
-          <h2 class="text-xl font-bold text-slate-900 mt-4">Ultrassom</h2>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Exame de imagem por ultrassom, feito conforme o pedido médico. Consulte os tipos disponíveis ao agendar.</p>
-          <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Ultrassom" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar ultrassom</a>
-        </article>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <article id="laboratoriais" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="flask-conical" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Exames laboratoriais</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Coleta de sangue e outros materiais pela manhã, de segunda a sexta. A recepção avisa quando precisa de jejum.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Exames laboratoriais" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar coleta</a>
+          </article>
+          <article id="ultrassom" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan-line" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Ultrassom</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Abdome, obstétrico e morfológico, transvaginal, pélvico, tireoide, mamas, articulações e partes moles, alguns com Doppler. Pergunte se o seu tipo é feito aqui.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Ultrassom" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar ultrassom</a>
+          </article>
+          <article id="raio-x" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Raio-X</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Radiografias feitas na própria clínica, com pedido médico. Consulte os horários.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Raio-X" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar raio-X</a>
+          </article>
+          <article id="ecocardiograma" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan-heart" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Ecocardiograma</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Ultrassom do coração: mostra o tamanho, as válvulas e o funcionamento do coração.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Ecocardiograma" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar ecocardiograma</a>
+          </article>
+          <article id="mapa-holter" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="gauge" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">MAPA e Holter 24 horas</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">O MAPA mede a pressão arterial e o Holter registra os batimentos do coração durante 24 horas, na sua rotina.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="MAPA e Holter 24 horas" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar MAPA ou Holter</a>
+          </article>
+          <article id="espirometria" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="wind" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Espirometria</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Exame do pulmão que mede a capacidade de respirar. Ajuda no diagnóstico de asma e bronquite.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Espirometria" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar espirometria</a>
+          </article>
+          <article id="endoscopia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan-search" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Endoscopia digestiva</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Exame do esôfago, do estômago e do duodeno. A recepção envia o termo e as orientações de preparo.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Endoscopia digestiva" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar endoscopia</a>
+          </article>
+          <article id="colonoscopia" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="scan-search" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Colonoscopia</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Exame do intestino grosso. A recepção envia o termo e as orientações de preparo.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Colonoscopia" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar colonoscopia</a>
+          </article>
+          <article id="ocupacionais" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="briefcase-medical" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Exames ocupacionais</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Admissional, periódico e demissional para empresas e trabalhadores. Traga os dados da empresa.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Exames ocupacionais" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar exames ocupacionais</a>
+          </article>
+          <article id="vacinacao" class="scroll-mt-32 target:ring-2 target:ring-brand-500 target:border-brand-500 card-hover bg-white rounded-2xl p-6 border border-slate-200 flex flex-col">
+            <span class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center"><i data-lucide="syringe" class="w-6 h-6"></i></span>
+            <h3 class="text-lg font-bold text-slate-900 mt-4">Vacinação</h3>
+            <p class="text-sm text-slate-600 mt-2 leading-relaxed flex-1">Aplicação de vacinas por profissional de enfermagem. Consulte as vacinas disponíveis.</p>
+            <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="exams" data-service="Vacinação" class="open-booking-modal-btn mt-5 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm text-center transition">Agendar vacinação</a>
+          </article>
+        </div>
       </div>
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">

@@ -6,7 +6,9 @@
 (function () {
   'use strict';
 
-  // Lista oficial de serviços (arte de especialidades da Unimaia).
+  // Serviços de cada área, iguais aos cards das páginas (listas da clínica de 11/maio).
+  // tests/content.test.mjs confere que cada botão "Agendar" das páginas existe aqui.
+  // O agendamento é por especialidade: o paciente não escolhe o profissional.
   const SERVICES = {
     medical: [
       'Clínica Geral',
@@ -16,24 +18,48 @@
       'Gastroenterologia',
       'Geriatria',
       'Ginecologia',
-      'Hepatologia',
+      'Mastologia',
       'Neurologia',
       'Nutrologia',
       'Obstetrícia',
       'Oftalmologia',
       'Ortopedia',
+      'Otorrinolaringologia',
       'Pediatria',
       'Pneumologia',
       'Psiquiatria',
+      'Reumatologia',
+      'Urologia',
       'Psicologia',
       'Fisioterapia',
-      'Quiropraxia',
+      'Nutrição',
     ],
-    dental: ['Odontologia: avaliação', 'Odontologia: outro tratamento (explico no WhatsApp)'],
-    exams: ['Exames laboratoriais', 'Ultrassom'],
+    dental: [
+      'Clínico geral',
+      'Clareamento dental',
+      'Siso e cirurgias',
+      'Implante dentário',
+      'Ortodontia (aparelho)',
+      'Tratamento de canal',
+      'Odontopediatria',
+      'Prótese dentária',
+      'Outro tratamento (explico no WhatsApp)',
+    ],
+    exams: [
+      'Exames laboratoriais',
+      'Ultrassom',
+      'Raio-X',
+      'Ecocardiograma',
+      'MAPA e Holter 24 horas',
+      'Espirometria',
+      'Endoscopia digestiva',
+      'Colonoscopia',
+      'Exames ocupacionais',
+      'Vacinação',
+    ],
   };
 
-  const AREA_NAMES = { medical: 'Consulta', dental: 'Odontologia', exams: 'Exames' };
+  const AREA_NAMES = { medical: 'Consulta', dental: 'Odontologia', exams: 'Exames e vacinas' };
 
   /**
    * Limpa texto digitado antes de ir para a mensagem: tira quebras de linha e

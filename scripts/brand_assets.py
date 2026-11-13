@@ -1,4 +1,5 @@
-"""Gera as variações da logo oficial da Unimaia (brand/unimaia-logo-original.webp)
+"""Gera as variações da logo oficial da Unimaia (brand/unimaia-logo-original.webp),
+da logo da Ótica Maia (brand/otica-maia-logo-original.jpg)
 e o crédito da Flowbotics no rodapé (brand/flowbotics-logo-original.webp).
 
 Rodar só quando a logo original mudar (não faz parte do build):
@@ -163,6 +164,55 @@ def flowbotics_assets() -> list:
     return out
 
 
+OTICA_SRC = ROOT / "brand" / "otica-maia-logo-original.jpg"
+
+
+def max_filter(values: np.ndarray, radius: int) -> np.ndarray:
+    """Maior valor na vizinhança (2*radius+1)² de cada pixel, só com numpy (sem scipy)."""
+    padded = np.pad(values, radius, mode="edge")
+    h, w = values.shape
+    out = np.zeros_like(values)
+    for dy in range(2 * radius + 1):
+        for dx in range(2 * radius + 1):
+            np.maximum(out, padded[dy:dy + h, dx:dx + w], out=out)
+    return out
+
+
+def remove_black_background(img: Image.Image) -> Image.Image:
+    """Fundo preto -> transparente, mantendo o degradê dourado.
+
+    Na arte não existe preto de propósito (é tudo dourado), então todo pixel quase preto é fundo,
+    inclusive o miolo das letras. Na borda das letras, o alfa é o brilho do pixel dividido pelo brilho
+    do dourado vizinho: assim a borda fica suave e o dourado escuro não vira semitransparente.
+    """
+    rgb = np.asarray(img.convert("RGB")).astype(np.float64)
+    bright = rgb.max(axis=2)
+    alpha = np.clip(bright / np.maximum(max_filter(bright, 3), 1), 0, 1)
+    background = bright < 24  # inclui o "chuvisco" da compressão JPEG no fundo
+    alpha[background] = 0
+    solid = ~max_filter(background.astype(np.float64), 1).astype(bool)  # longe do fundo: 100% opaco
+    alpha[solid] = 1
+    a = alpha[..., None]
+    fg = np.where(a > 0, rgb / np.maximum(a, 1e-6), 0)  # "desmistura" do preto
+    out = np.dstack([np.clip(fg, 0, 255), alpha * 255]).round().astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
+
+
+def otica_assets() -> list:
+    """Logo da Ótica Maia sem o fundo preto, para usar sobre fundo escuro (seção da ótica)."""
+    logo = trim(remove_black_background(Image.open(OTICA_SRC)), min_alpha=12)
+    out = []
+    big_w = 640  # 2x de 320 px de largura
+    big_h = round(logo.height * big_w / logo.width)
+    big_h += big_h % 2  # altura par: a 1x fica exatamente com a metade
+    big = logo.resize((big_w, big_h), Image.LANCZOS)
+    small = big.resize((big_w // 2, big_h // 2), Image.LANCZOS)
+    save_all(big, f"otica-maia-{VERSION}-640")
+    save_all(small, f"otica-maia-{VERSION}-320")
+    out.append((f"otica-maia-{VERSION}", small.size, big.size))
+    return out
+
+
 def main() -> None:
     OUT_BRAND.mkdir(parents=True, exist_ok=True)
     full = remove_background(Image.open(SRC))
@@ -208,6 +258,7 @@ def main() -> None:
     )
 
     sizes += flowbotics_assets()
+    sizes += otica_assets()
     for stem, small, big in sizes:
         print(f"{stem}: 1x {small[0]}x{small[1]}, 2x {big[0]}x{big[1]}  (use width={small[0]} height={small[1]} no HTML)")
     for f in sorted(OUT_BRAND.iterdir()):
