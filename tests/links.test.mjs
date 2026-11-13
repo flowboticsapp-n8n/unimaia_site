@@ -46,3 +46,19 @@ test('links, âncoras e arquivos internos do site gerado existem', { skip: !exis
   }
   assert.deepEqual(missing, []);
 });
+
+// Prévia do WhatsApp/Facebook: a imagem precisa de URL absoluta no domínio do site e tem de existir.
+test('toda página tem og:image e og:url absolutos, e a imagem existe no build', { skip: !existsSync(dist) && 'rode npm run build antes' }, () => {
+  const { siteUrl } = JSON.parse(readFileSync('site.config.json', 'utf8'));
+  const problems = [];
+  for (const page of readdirSync(dist).filter((f) => f.endsWith('.html'))) {
+    const html = readFileSync(path.join(dist, page), 'utf8');
+    const image = html.match(/<meta property="og:image" content="([^"]+)">/)?.[1];
+    const url = html.match(/<meta property="og:url" content="([^"]+)">/)?.[1];
+    const expectedUrl = page === 'index.html' ? `${siteUrl}/` : `${siteUrl}/${page.replace('.html', '')}`;
+    if (!image?.startsWith(`${siteUrl}/`)) problems.push(`${page}: og:image ausente ou relativa (${image})`);
+    else if (!existsSync(path.join(dist, image.slice(siteUrl.length)))) problems.push(`${page}: ${image} não existe em dist/`);
+    if (url !== expectedUrl) problems.push(`${page}: og:url ${url} (esperado ${expectedUrl})`);
+  }
+  assert.deepEqual(problems, []);
+});

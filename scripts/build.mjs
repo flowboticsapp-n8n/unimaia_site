@@ -19,6 +19,7 @@ import {
   jsonForScript,
   clinicJsonLd,
   robotsContent,
+  pageUrl,
 } from './lib.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -92,7 +93,7 @@ async function main() {
       html,
       {
         site,
-        page: { title: meta.title, description: meta.description, head, robots: robotsContent(site, meta) },
+        page: { title: meta.title, description: meta.description, head, robots: robotsContent(site, meta), url: pageUrl(site, name) },
         asset: { css: cssPath, js: jsPath },
       },
       new Set(['page.head']),

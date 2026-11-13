@@ -214,10 +214,15 @@
             <a href="{{site.whatsappLink}}" target="_blank" rel="noopener" data-area="medical" data-service="Oftalmologia" class="open-booking-modal-btn inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-neutral-950 font-bold px-6 py-3.5 rounded-xl transition">
               <i data-lucide="calendar" class="w-5 h-5"></i> Agendar oftalmologia
             </a>
-            <a href="{{site.whatsappLink}}?text=Ol%C3%A1!%20Quero%20informa%C3%A7%C3%B5es%20sobre%20a%20%C3%93tica%20Maia." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-amber-400/60 text-amber-300 hover:bg-amber-400/10 font-bold px-6 py-3.5 rounded-xl transition">
-              <i data-lucide="message-circle" class="w-5 h-5"></i> Falar sobre óculos
+            <!-- A ótica ainda não tem WhatsApp: o contato é pelo Instagram (site.config.json > opticsInstagram). -->
+            <a href="{{site.opticsInstagramUrl}}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-amber-400/60 text-amber-300 hover:bg-amber-400/10 font-bold px-6 py-3.5 rounded-xl transition">
+              <i data-lucide="instagram" class="w-5 h-5"></i> @{{site.opticsInstagram}}
             </a>
           </div>
+          <address class="not-italic flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-x-3 gap-y-1 text-sm text-neutral-300">
+            <span><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-1 -mt-0.5 align-middle text-amber-300"></i>{{site.opticsStreet}}, {{site.opticsNeighborhood}}, {{site.city}}-{{site.state}}</span>
+            <a href="{{site.opticsMapsLink}}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 py-2 font-semibold text-amber-300 hover:text-amber-200 underline underline-offset-4">Como chegar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </address>
           <p class="text-xs text-neutral-400">A receita é sua: você escolhe onde fazer os seus óculos.</p>
         </div>
 

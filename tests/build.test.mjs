@@ -11,6 +11,8 @@ import {
   jsonForScript,
   normalizeSvg,
   robotsContent,
+  pageUrl,
+  clinicJsonLd,
 } from '../scripts/lib.mjs';
 
 const baseConfig = {
@@ -24,6 +26,14 @@ const baseConfig = {
   instagram: 'unimaia_',
   googleBusinessUrl: 'https://share.google/abc',
   indexable: false,
+  siteUrl: 'https://unimaia.com.br',
+  opticsStreet: 'Rua Y, 2',
+  opticsNeighborhood: 'Centro',
+  opticsInstagram: 'oticamaia10',
+  openingHours: [
+    { days: ['Monday', 'Friday'], opens: '07:00', closes: '19:00' },
+    { days: ['Saturday'], opens: '07:00', closes: '13:00' },
+  ],
 };
 
 test('escapeHtml neutraliza HTML', () => {
@@ -101,4 +111,47 @@ test('markActiveNav marca só o link da página atual', () => {
 
 test('jsonForScript não permite fechar a tag <script>', () => {
   assert.equal(jsonForScript({ a: '</script><script>alert(1)</script>' }).includes('</script>'), false);
+});
+
+test('buildSiteData exige siteUrl https sem barra no fim (a prévia do WhatsApp precisa de URL absoluta)', () => {
+  for (const siteUrl of [undefined, 'http://unimaia.com.br', 'https://unimaia.com.br/', 'unimaia.com.br', 'https://unimaia.com.br/x']) {
+    assert.throws(() => buildSiteData({ ...baseConfig, siteUrl }), /siteUrl/, String(siteUrl));
+  }
+});
+
+test('buildSiteData valida os horários (dia em inglês, HH:MM, abre antes de fechar)', () => {
+  const bad = [
+    undefined,
+    [],
+    { days: ['Monday'], opens: '07:00', closes: '19:00' }, // objeto solto, não lista
+    [{ days: ['Segunda'], opens: '07:00', closes: '19:00' }],
+    [{ days: ['Monday'], opens: '7:00', closes: '19:00' }],
+    [{ days: ['Monday'], opens: '19:00', closes: '07:00' }],
+    [{ days: [], opens: '07:00', closes: '19:00' }],
+  ];
+  for (const openingHours of bad) {
+    assert.throws(() => buildSiteData({ ...baseConfig, openingHours }), /openingHours/, JSON.stringify(openingHours));
+  }
+});
+
+test('buildSiteData monta os links da ótica e valida o Instagram dela', () => {
+  assert.throws(() => buildSiteData({ ...baseConfig, opticsInstagram: '@oticamaia10' }), /opticsInstagram/);
+  const site = buildSiteData(baseConfig);
+  assert.equal(site.opticsInstagramUrl, 'https://www.instagram.com/oticamaia10/');
+  assert.match(site.opticsMapsLink, /^https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=Rua%20Y%2C%202/);
+});
+
+test('pageUrl: raiz para a inicial e caminho sem .html para as outras', () => {
+  const site = buildSiteData(baseConfig);
+  assert.equal(pageUrl(site, 'index'), 'https://unimaia.com.br/');
+  assert.equal(pageUrl(site, 'medicina'), 'https://unimaia.com.br/medicina');
+});
+
+test('clinicJsonLd publica cada faixa de horário e o endereço do site', () => {
+  const ld = clinicJsonLd({ ...buildSiteData(baseConfig), legalName: 'U', tagline: 't' });
+  assert.equal(ld.url, 'https://unimaia.com.br/');
+  assert.deepEqual(
+    ld.openingHoursSpecification.map((h) => [h.dayOfWeek, h.opens, h.closes]),
+    [[['Monday', 'Friday'], '07:00', '19:00'], [['Saturday'], '07:00', '13:00']],
+  );
 });
