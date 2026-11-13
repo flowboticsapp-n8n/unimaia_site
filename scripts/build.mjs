@@ -71,7 +71,7 @@ async function main() {
   await rm(cssTmp);
   const jsPath = await writeHashed('main', '.js', await readFile(path.join(src, 'js', 'main.js')));
 
-  // Fontes e arquivos estáticos (favicon, _headers, robots.txt).
+  // Fontes e arquivos estáticos (ícones, robots.txt, logos e fotos).
   for (const f of (await readdir(path.join(src, 'fonts'))).filter((n) => n.endsWith('.woff2'))) {
     await cp(path.join(src, 'fonts', f), path.join(assetsOut, 'fonts', f));
   }
@@ -104,7 +104,7 @@ async function main() {
 
   console.log(`Build ok em ${Date.now() - started} ms: ${Object.keys(pages).length} páginas, ${cssPath}, ${jsPath}`);
   if (!site.indexable) {
-    // Aparece em todo build (inclusive no log do Cloudflare) para ninguém esquecer.
+    // Aparece em todo build (inclusive no build da imagem Docker) para ninguém esquecer.
     console.warn(
       'AVISO: indexação no Google BLOQUEADA (site.config.json: "indexable": false). ' +
         'Ao ligar o domínio próprio, siga o README > "Checklist para ir para produção".',

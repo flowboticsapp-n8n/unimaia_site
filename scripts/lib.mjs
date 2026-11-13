@@ -155,3 +155,16 @@ export function clinicJsonLd(site) {
     sameAs: [site.instagramUrl],
   };
 }
+
+/**
+ * Lê as linhas `add_header Nome "valor" always;` de um arquivo de configuração do nginx.
+ * Ignora valores com variáveis do nginx ($request_id), que só existem no servidor.
+ */
+export function parseNginxHeaders(text) {
+  const headers = [];
+  for (const line of text.split('\n')) {
+    const m = line.match(/^\s*add_header\s+([A-Za-z0-9-]+)\s+"([^"]*)"/);
+    if (m && !m[2].includes('$')) headers.push([m[1], m[2]]);
+  }
+  return headers;
+}

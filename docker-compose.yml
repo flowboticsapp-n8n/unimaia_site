@@ -1,0 +1,25 @@
+# Exemplo para a VPS. O proxy com HTTPS (Traefik, Caddy, Nginx Proxy Manager, Easypanel...) encaminha
+# o domínio para a porta 8080 deste container. Painéis como Easypanel/Coolify podem usar só o Dockerfile.
+services:
+  site:
+    build: .
+    image: unimaia-site:latest
+    restart: unless-stopped
+    ports:
+      # Só acessível pela própria VPS (o proxy). Se o proxy estiver em outra rede Docker,
+      # remova "ports" e coloque o serviço na rede do proxy.
+      - "127.0.0.1:8080:8080"
+    # Endurecimento: sistema de arquivos só leitura, sem capacidades extras do Linux.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    # Logs rotativos: no máximo 3 arquivos de 10 MB (não enche o disco da VPS).
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

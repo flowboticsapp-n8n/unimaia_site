@@ -1,12 +1,14 @@
-// Servidor local para testar o dist/ como no Cloudflare (wrangler.jsonc):
-// URLs sem ".html" (/medicina -> medicina.html), 404.html e cabeçalhos do _headers.
-// Só para desenvolvimento: escuta apenas em 127.0.0.1.
+// Servidor local para testar o dist/ parecido com o nginx de produção (deploy/nginx):
+// URLs sem ".html" (/medicina -> medicina.html), 404.html e os mesmos cabeçalhos de segurança.
+// Só para desenvolvimento: escuta apenas em 127.0.0.1. Para testar o container de verdade, use o Docker.
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseNginxHeaders } from './lib.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.join(projectRoot, 'dist');
 const port = Number(process.env.PORT) || 4173;
 
 const TYPES = {
@@ -22,29 +24,10 @@ const TYPES = {
   '.avif': 'image/avif',
 };
 
-// Leitura simples do formato _headers do Cloudflare (padrões com * no fim).
-async function loadHeaderRules() {
-  let text = '';
-  try {
-    text = await readFile(path.join(root, '_headers'), 'utf8');
-  } catch {
-    return [];
-  }
-  const rules = [];
-  for (const line of text.split('\n')) {
-    if (!line.trim() || line.trim().startsWith('#')) continue;
-    if (!/^\s/.test(line)) {
-      rules.push({ pattern: line.trim(), headers: [] });
-    } else if (rules.length) {
-      const i = line.indexOf(':');
-      rules.at(-1).headers.push([line.slice(0, i).trim(), line.slice(i + 1).trim()]);
-    }
-  }
-  return rules;
-}
-
-function matches(pattern, urlPath) {
-  return pattern.endsWith('*') ? urlPath.startsWith(pattern.slice(0, -1)) : urlPath === pattern;
+// Mesmos cabeçalhos de segurança do nginx (CSP etc.), lidos do arquivo usado na imagem Docker.
+async function loadSecurityHeaders() {
+  const text = await readFile(path.join(projectRoot, 'deploy', 'nginx', 'security-headers.conf'), 'utf8');
+  return parseNginxHeaders(text);
 }
 
 async function resolveFile(urlPath) {
@@ -62,7 +45,7 @@ async function resolveFile(urlPath) {
   return null;
 }
 
-const rules = await loadHeaderRules();
+const securityHeaders = await loadSecurityHeaders();
 
 createServer(async (req, res) => {
   try {
@@ -73,9 +56,7 @@ createServer(async (req, res) => {
       file = path.join(root, '404.html');
       status = 404;
     }
-    for (const rule of rules) {
-      if (matches(rule.pattern, urlPath)) for (const [k, v] of rule.headers) res.setHeader(k, v);
-    }
+    for (const [k, v] of securityHeaders) res.setHeader(k, v);
     res.setHeader('Content-Type', TYPES[path.extname(file)] || 'application/octet-stream');
     res.writeHead(status);
     res.end(await readFile(file));

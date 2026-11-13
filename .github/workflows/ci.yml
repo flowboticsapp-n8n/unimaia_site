@@ -42,3 +42,40 @@ jobs:
 
       - name: Testes
         run: npm test
+
+  # Constrói a imagem Docker de produção (o build já roda os testes) e testa o container
+  # com as mesmas restrições do docker-compose.yml: sistema de arquivos só leitura e sem privilégios.
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build da imagem
+        run: docker build -t unimaia-site:ci .
+
+      - name: Valida a configuração do nginx
+        run: docker run --rm unimaia-site:ci nginx -t
+
+      - name: Sobe o container como em produção
+        run: >
+          docker run -d --name site -p 8080:8080
+          --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges
+          unimaia-site:ci
+
+      - name: Teste de fumaça
+        run: bash scripts/smoke-test.sh http://127.0.0.1:8080
+
+      - name: Health check do Docker fica "healthy"
+        run: |
+          for i in $(seq 1 20); do
+            s=$(docker inspect --format '{{.State.Health.Status}}' site)
+            echo "health: $s"
+            [ "$s" = "healthy" ] && exit 0
+            sleep 3
+          done
+          exit 1
+
+      - name: Logs do container (só se algo falhar)
+        if: failure()
+        run: docker logs site

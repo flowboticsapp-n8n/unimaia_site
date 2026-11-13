@@ -1,9 +1,9 @@
 # Site Unimaia · Clínica Médica e Odontológica (Lajedo-PE)
 
-Site estático, rápido e sem servidor: as páginas são geradas no build e publicadas no **Cloudflare Workers (Static Assets)**, o caminho recomendado pelo Cloudflare para sites novos.
+Site estático e rápido: as páginas são geradas no build e servidas por **nginx num container Docker** na VPS, atrás do proxy com HTTPS.
 O agendamento acontece pelo WhatsApp da clínica (o site não guarda dados de pacientes).
 
-**No ar:** https://unimaia-site.flowboticsapp.workers.dev/ (endereço provisório do Cloudflare, até ligar o domínio da clínica).
+**Hospedagem:** VPS própria (veja [Deploy na VPS](#deploy-na-vps-docker--nginx)).
 
 ## Como rodar
 
@@ -21,7 +21,7 @@ npm run build
 npm run preview
 ```
 
-Abra http://127.0.0.1:4173. O preview imita o Cloudflare: URLs sem `.html`, página 404 e cabeçalhos do `_headers`.
+Abra http://127.0.0.1:4173. O preview imita o nginx de produção: URLs sem `.html`, página 404 e os cabeçalhos de `deploy/nginx/security-headers.conf`. Para testar o container de verdade, veja [Deploy na VPS](#deploy-na-vps-docker--nginx).
 
 ```bash
 npm test
@@ -42,7 +42,8 @@ npm test
 | `src/css/input.css` | Fontes e estilos extras. O resto é Tailwind (`tailwind.config.js`, com as cores da logo). |
 | `src/icons/` | Ícones SVG (Lucide, licença ISC). Para usar um novo, copie o `.svg` para cá e use `<i data-lucide="nome" class="w-5 h-5"></i>`. |
 | `src/fonts/` | Fontes Plus Jakarta Sans e Outfit (licença OFL), hospedadas no próprio site. |
-| `src/static/` | Copiado como está para o site: `_headers`, `robots.txt`, ícones do navegador e `assets/brand/` (logos). |
+| `src/static/` | Copiado como está para o site: `robots.txt`, ícones do navegador, `assets/brand/` (logos) e `assets/img/` (fotos). |
+| `Dockerfile`, `deploy/nginx/`, `docker-compose.yml` | Imagem de produção (nginx) e a configuração dele: rotas, cache, cabeçalhos de segurança e logs. |
 | `brand/` | Logo oficial original, fonte das variações (não vai para o site). |
 | `media/` | Fotos originais, fonte das versões otimizadas (não vão para o site). |
 | `scripts/` | Build, servidor de preview, `brand_assets.py` (variações da logo) e `optimize_images.py` (fotos em AVIF/WebP/JPEG). |
@@ -50,29 +51,74 @@ npm test
 
 O build gera `dist/` (não vai para o Git).
 
-## Deploy no Cloudflare (Workers com Static Assets)
+## Deploy na VPS (Docker + nginx)
 
-A configuração está em `wrangler.jsonc`: publica a pasta `dist/`, serve `/medicina` a partir de `medicina.html` e usa `404.html` para endereços inexistentes. Não há código de servidor.
+O `Dockerfile` da raiz gera a imagem de produção em duas etapas:
 
-**Primeira vez (no painel do Cloudflare; os nomes dos botões podem mudar):**
-1. **Workers & Pages → Create → Workers → Import a repository** e escolha este repositório do GitHub.
-2. Configuração do build:
-   - **Production branch:** `main`
-   - **Build command:** `npm run build`
-   - **Deploy command:** `npx wrangler deploy` (padrão)
-   - **Branches que não são a `main`** rodam `npx wrangler preview` e geram uma prévia com endereço próprio, sem mexer no site no ar. Esse comando exige o bloco `"previews"` no `wrangler.jsonc` (já incluso).
-   - O Node vem do arquivo `.node-version` (22). As dependências são instaladas automaticamente a partir do `package-lock.json`.
-3. Depois disso, cada push na `main` publica o site sozinho. Antes de ter domínio próprio, o site fica em **https://unimaia-site.flowboticsapp.workers.dev/**.
-4. **Domínio próprio:** em **Settings → Domains & Routes**. No Workers, o domínio precisa estar gerenciado pelo Cloudflare (DNS apontado para ele, plano grátis). Se o domínio for do Registro.br, troque os servidores DNS para os do Cloudflare.
-5. **Velocidade dos usuários reais:** em **Analytics & Logs → Web Analytics**, adicione o site. Ele mede os Core Web Vitals sem cookies. O `_headers` já libera o script do Cloudflare.
+1. **Build** (`node:22-alpine`): instala as dependências (`npm ci`), roda a checagem de sintaxe, o build e os testes. Se algum teste falhar, a imagem não é criada.
+2. **Final** (`nginx/nginx-unprivileged:1.30-alpine`): só o nginx e o site pronto (`dist/`). Sem Node e sem código-fonte. O nginx roda como usuário comum (não root) na porta **8080**.
 
-**Plano gratuito:** requisições de arquivos estáticos não são cobradas. O build tem 3.000 minutos por mês (o deste site leva poucos segundos), 1 build por vez e no máximo 20 min cada.
+O nginx (`deploy/nginx/default.conf`) faz:
+- URLs sem `.html` (`/medicina` serve `medicina.html`) e a página `404.html` para endereços inexistentes;
+- cabeçalhos de segurança (`deploy/nginx/security-headers.conf`): CSP, nosniff, Referrer-Policy, Permissions-Policy e `X-Request-ID`;
+- cache de 1 ano para `/assets/*` (nomes com hash/versão) e `no-cache` no HTML, para publicação nova aparecer na hora;
+- compressão gzip de HTML, CSS, JS e SVG;
+- `GET /healthz` para o health check;
+- log de acesso em JSON no stdout, com `request_id` e sem query string;
+- só aceita GET/HEAD (POST e outros: 405) e nunca serve arquivos ocultos (`/.git`, `/.env`).
 
-O Cloudflare entrega tudo por CDN, com HTTPS e compressão Brotli. O `_headers` (em `src/static/`, copiado para `dist/`) define:
-- cache de 1 ano para `/assets/*` (CSS/JS têm hash no nome, então nunca ficam velhos);
-- cabeçalhos de segurança: CSP, nosniff, Referrer-Policy e Permissions-Policy.
+**O container não faz HTTPS.** O proxy da VPS (Traefik, Caddy, Nginx Proxy Manager, Easypanel, Coolify...) recebe o domínio com o certificado e encaminha para a porta 8080. Configure o HSTS no proxy, que é quem tem o HTTPS.
 
-> Se adicionar um serviço externo (Google Analytics, Meta Pixel, fotos de outro domínio), inclua o domínio no `Content-Security-Policy` do `src/static/_headers`, senão o navegador bloqueia.
+### Subir com Docker Compose
+
+Na VPS:
+
+```bash
+git clone https://github.com/flowboticsapp-n8n/unimaia_site.git
+```
+
+```bash
+cd unimaia_site && docker compose up -d --build
+```
+
+Depois aponte o proxy para `http://127.0.0.1:8080`. Se o proxy roda em outra rede Docker, troque o `ports` do `docker-compose.yml` pela rede do proxy e use `http://site:8080`.
+
+Conferir se está tudo certo:
+
+```bash
+bash scripts/smoke-test.sh http://127.0.0.1:8080
+```
+
+Ver os logs (JSON, um por linha):
+
+```bash
+docker compose logs -f site
+```
+
+**Atualizar depois de um merge na `main`:**
+
+```bash
+git pull && docker compose up -d --build
+```
+
+**Voltar para a versão anterior** se algo der errado: `git checkout <commit-anterior>` e rode `docker compose up -d --build` de novo.
+
+### Painéis (Easypanel, Coolify, Dokploy)
+
+Crie um app a partir do repositório do GitHub com:
+- tipo de build: **Dockerfile** (na raiz);
+- porta interna: **8080**;
+- health check: **`/healthz`**.
+
+O painel cuida do domínio e do HTTPS.
+
+### Segurança do container
+
+O `docker-compose.yml` sobe o container com sistema de arquivos só leitura (`read_only` + `tmpfs /tmp`), sem capacidades extras do Linux (`cap_drop: ALL`), com `no-new-privileges` e logs rotativos (3 arquivos de 10 MB). A porta fica presa ao `127.0.0.1`, então só o proxy da própria VPS acessa.
+
+**CI:** o job `docker` do GitHub Actions constrói a imagem, valida o nginx (`nginx -t`), sobe o container com essas mesmas restrições e roda o `scripts/smoke-test.sh` a cada PR.
+
+> Se adicionar um serviço externo (Google Analytics, Meta Pixel, fotos de outro domínio), inclua o domínio no `Content-Security-Policy` de `deploy/nginx/security-headers.conf`, senão o navegador bloqueia. Atualize também a Política de Privacidade.
 
 ## Navegação no celular
 
@@ -123,15 +169,15 @@ Ao colocar fotos reais (equipe, fachada, recepção):
 ## Checklist para ir para produção (domínio próprio)
 
 > **Hoje o Google está BLOQUEADO de indexar o site** (`"indexable": false` no `site.config.json`).
-> Assim o endereço provisório `workers.dev` e as prévias de PR não aparecem nas buscas.
+> Assim o site não aparece nas buscas antes de estar no endereço definitivo.
 > Todo build mostra um aviso no log enquanto isso estiver ligado.
 
 Quando o domínio da clínica estiver pronto, faça nesta ordem:
 
-- [ ] Ligar o domínio no Cloudflare (Settings → Domains & Routes) e conferir o site nele.
+- [ ] Apontar o DNS do domínio para a VPS, configurar o domínio com HTTPS no proxy e conferir o site nele.
 - [ ] **Liberar a indexação:** trocar para `"indexable": true` no `site.config.json`.
 - [ ] Adicionar canonical apontando para o domínio, sitemap.xml e imagem de compartilhamento (og:image).
-- [ ] Desativar o endereço `workers.dev` do Worker, para não ter conteúdo duplicado no Google.
+- [ ] Apagar o projeto antigo no Cloudflare (Workers & Pages → unimaia-site), para não sobrar uma cópia do site no ar.
 - [ ] Cadastrar o domínio no Google Search Console e enviar o sitemap.
 - [x] Desligar o GitHub Pages do repositório (Settings → Pages).
 - [ ] Confirmar com a clínica os itens abaixo.
@@ -142,7 +188,7 @@ Quando o domínio da clínica estiver pronto, faça nesta ordem:
 - [ ] Canal para pedidos dos titulares (`privacyContact` no `site.config.json`), de preferência um e-mail.
 - [ ] Nome do Encarregado pelo tratamento de dados (`dpoName`).
 - [ ] Revisão do texto pelo jurídico ou pela assessoria de LGPD da clínica.
-- [ ] Se ativar o Web Analytics do Cloudflare ou outra ferramenta (GA4, Meta Pixel), atualizar as seções 2, 3 e 5 da política e a data em `privacyUpdatedAt`.
+- [ ] Se ativar alguma ferramenta de métricas (GA4, Meta Pixel, Plausible...), atualizar as seções 2, 3 e 5 da política, a CSP do nginx e a data em `privacyUpdatedAt`.
 
 **Avaliações na página inicial:**
 - [ ] Confirmar com a clínica o uso das avaliações do Google no site, conferindo as regras de publicidade do CFM e do CFO sobre depoimentos. As escolhidas falam de atendimento e estrutura, não de resultado de tratamento.
