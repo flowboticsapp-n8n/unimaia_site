@@ -22,7 +22,7 @@ header() { curl -s -D - -o /dev/null --max-time 5 "${@:2}" | tr -d '\r' | grep -
 [ "$(curl -s --max-time 5 "$BASE/healthz")" = "ok" ] && ok "/healthz responde ok" || fail "/healthz"
 
 # Páginas (URLs sem .html)
-for p in / /medicina /odontologia /exames /corpo-clinico /contato /privacidade; do
+for p in / /medicina /odontologia /exames /contato /privacidade; do
   [ "$(status "$BASE$p")" = "200" ] && ok "$p 200" || fail "$p deveria ser 200"
 done
 
@@ -30,6 +30,8 @@ done
 [ "$(status "$BASE/nao-existe")" = "404" ] && ok "/nao-existe 404" || fail "/nao-existe deveria ser 404"
 curl -s --max-time 5 "$BASE/nao-existe" | grep -q "Não encontramos esta página" && ok "404 usa a página do site" || fail "404 sem a página do site"
 [ "$(status "$BASE/convenios")" = "404" ] && ok "/convenios 404" || fail "/convenios deveria ser 404"
+# Página de equipe em rascunho (draft: true) até a clínica enviar os profissionais
+[ "$(status "$BASE/corpo-clinico")" = "404" ] && ok "/corpo-clinico 404 (rascunho)" || fail "/corpo-clinico deveria ser 404"
 
 # Arquivos ocultos nunca são servidos
 [ "$(status "$BASE/.git/config")" = "404" ] && ok "/.git/config bloqueado" || fail "/.git/config deveria ser 404"

@@ -81,6 +81,7 @@ async function main() {
   const layout = partials.layout;
   if (!layout) throw new Error('src/partials/layout.html não encontrado');
 
+  const drafts = [];
   for (const [name, source] of Object.entries(pages)) {
     const { meta, body } = parsePage(source, `${name}.html`);
     const head = meta.jsonld
@@ -100,10 +101,17 @@ async function main() {
     );
     html = inlineIcons(html, icons);
     html = markActiveNav(html, meta.nav);
+    // Rascunho: a página passa pelas mesmas checagens (placeholders, ícones), mas não é publicada.
+    if (meta.draft === true) {
+      drafts.push(name);
+      continue;
+    }
     await writeFile(path.join(dist, `${name}.html`), html);
   }
 
-  console.log(`Build ok em ${Date.now() - started} ms: ${Object.keys(pages).length} páginas, ${cssPath}, ${jsPath}`);
+  const published = Object.keys(pages).length - drafts.length;
+  console.log(`Build ok em ${Date.now() - started} ms: ${published} páginas, ${cssPath}, ${jsPath}`);
+  if (drafts.length) console.log(`Rascunhos (não publicados): ${drafts.join(', ')}`);
   if (!site.indexable) {
     // Aparece em todo build (inclusive no build da imagem Docker) para ninguém esquecer.
     console.warn(
